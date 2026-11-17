@@ -1,6 +1,6 @@
 # Outbox — Official Product Website
 
-A modern, high-performance product landing page and interactive application simulator for **Outbox** (Dropbox Recursive Downloader Pro), built with **React 19**, **TypeScript**, **Tailwind CSS v4**, and **Lucide Icons**.
+A modern, high-performance product landing page and interactive application simulator for **Outbox**, built with **React 19**, **TypeScript**, **Tailwind CSS v4**, and **Lucide Icons**.
 
 ## 🚀 Features
 
@@ -13,10 +13,10 @@ A modern, high-performance product landing page and interactive application simu
 - **Engine Capabilities & Feature Grid**: Deep technical breakdown of byte-range resumption, SHA-256 content_hash block integrity, PKCE OAuth, smart directory normalization, and on-demand cloud audits.
 - **Comprehensive Comparison Matrix**: Outbox vs. Dropbox Web ZIP vs. Official Sync Client vs. CLI tools (rclone/wget).
 - **Architecture Showcase**: Clean modular Python/PySide6 design pattern (≤400 lines/file rule, QThread non-blocking workers, pytest automation).
-- **Tabbed Installation & Setup Guide**: Standalone Windows `.exe`, running from Python virtual environment, Dropbox App Key configuration, and automated test commands.
+- **Tabbed Installation & Setup Guide**: Standalone Windows `.exe` and macOS `.dmg` setup guides.
 - **Audience & Use Cases**: Video editors, commercial photographers, game developers, sound designers.
 - **Interactive FAQ Accordion**: In-depth explanations of security, file integrity, and platform support.
-- **Download Modal & Checksums**: 1-click SHA-256 checksum copy, Windows installer, portable ZIP, and GitHub links.
+- **Download Modal**: 1-click downloads for Windows installer and macOS disk image.
 - **Responsive Dark/Light Aesthetics**: Polished dark mode with vibrant royal blue accents matching the native PySide6 desktop app theme.
 
 ---

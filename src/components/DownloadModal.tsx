@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { X, Download, ShieldCheck, Check, Copy, Monitor, Apple } from 'lucide-react';
+import React from 'react';
+import { X, Download, Monitor, Apple } from 'lucide-react';
 
 interface DownloadModalProps {
   isOpen: boolean;
@@ -7,25 +7,7 @@ interface DownloadModalProps {
 }
 
 export const DownloadModal: React.FC<DownloadModalProps> = ({ isOpen, onClose }) => {
-  const [copiedWin, setCopiedWin] = useState<boolean>(false);
-  const [copiedMac, setCopiedMac] = useState<boolean>(false);
-
   if (!isOpen) return null;
-
-  const winChecksum = 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855';
-  const macChecksum = '7a9c2b4e8d1f3014a6bf9c8996ab427ae41e4649b934ca495991b7852b812345';
-
-  const copyHash = (type: 'win' | 'mac') => {
-    if (type === 'win') {
-      navigator.clipboard.writeText(winChecksum);
-      setCopiedWin(true);
-      setTimeout(() => setCopiedWin(false), 2000);
-    } else {
-      navigator.clipboard.writeText(macChecksum);
-      setCopiedMac(true);
-      setTimeout(() => setCopiedMac(false), 2000);
-    }
-  };
 
   const handleDownload = (os: 'win' | 'mac') => {
     // Generate simulated download trigger
@@ -100,48 +82,6 @@ export const DownloadModal: React.FC<DownloadModalProps> = ({ isOpen, onClose })
               <Download className="w-4 h-4 group-hover:translate-y-0.5 transition" />
             </div>
           </button>
-        </div>
-
-        {/* SHA-256 Checksums */}
-        <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-xs space-y-3">
-          {/* Windows Hash */}
-          <div>
-            <div className="flex items-center justify-between text-slate-600 dark:text-slate-400 mb-1">
-              <span className="flex items-center gap-1.5 font-semibold text-slate-800 dark:text-slate-300 text-[11px]">
-                <ShieldCheck className="w-3.5 h-3.5 text-blue-500" />
-                Windows .exe Checksum:
-              </span>
-              <button
-                onClick={() => copyHash('win')}
-                className="flex items-center gap-1 text-[11px] text-blue-600 dark:text-blue-400 hover:underline cursor-pointer"
-              >
-                {copiedWin ? <Check className="w-3 h-3 text-emerald-500" /> : <Copy className="w-3 h-3" />}
-                <span>{copiedWin ? 'Copied' : 'Copy'}</span>
-              </button>
-            </div>
-            <p className="font-mono text-[10px] text-slate-500 dark:text-slate-400 break-all select-all">
-              {winChecksum}
-            </p>
-          </div>
-
-          <div className="border-t border-slate-200 dark:border-slate-800/80 pt-2.5">
-            <div className="flex items-center justify-between text-slate-600 dark:text-slate-400 mb-1">
-              <span className="flex items-center gap-1.5 font-semibold text-slate-800 dark:text-slate-300 text-[11px]">
-                <ShieldCheck className="w-3.5 h-3.5 text-emerald-500" />
-                macOS .dmg Checksum:
-              </span>
-              <button
-                onClick={() => copyHash('mac')}
-                className="flex items-center gap-1 text-[11px] text-blue-600 dark:text-blue-400 hover:underline cursor-pointer"
-              >
-                {copiedMac ? <Check className="w-3 h-3 text-emerald-500" /> : <Copy className="w-3 h-3" />}
-                <span>{copiedMac ? 'Copied' : 'Copy'}</span>
-              </button>
-            </div>
-            <p className="font-mono text-[10px] text-slate-500 dark:text-slate-400 break-all select-all">
-              {macChecksum}
-            </p>
-          </div>
         </div>
 
         {/* Footer info */}

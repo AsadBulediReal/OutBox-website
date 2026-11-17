@@ -368,7 +368,7 @@ export const InteractiveAppSimulator: React.FC = () => {
             <div className="w-3 h-3 rounded-full bg-amber-500/80" />
             <div className="w-3 h-3 rounded-full bg-emerald-500/80" />
             <span className="ml-2 text-xs font-semibold text-slate-400 hidden sm:inline">
-              Outbox — Dropbox Recursive Downloader Pro [PySide6 Engine]
+              Outbox Pro [PySide6 Engine]
             </span>
           </div>
 

@@ -1,15 +1,8 @@
 import React, { useState } from 'react';
-import { Download, Key, Check, Copy, ExternalLink, CheckCircle, Monitor, Apple, ShieldCheck } from 'lucide-react';
+import { Download, Monitor, Apple } from 'lucide-react';
 
 export const QuickStartTabs: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<'win' | 'mac' | 'env' | 'checksum'>('win');
-  const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
-
-  const handleCopy = (text: string, idx: number) => {
-    navigator.clipboard.writeText(text);
-    setCopiedIndex(idx);
-    setTimeout(() => setCopiedIndex(null), 2000);
-  };
+  const [activeTab, setActiveTab] = useState<'win' | 'mac'>('win');
 
   return (
     <section id="quickstart" className="py-20 md:py-28 relative scroll-mt-20">
@@ -52,30 +45,6 @@ export const QuickStartTabs: React.FC = () => {
               <Apple className="w-4 h-4" />
               <span>macOS (.dmg)</span>
             </button>
-
-            <button
-              onClick={() => setActiveTab('env')}
-              className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition cursor-pointer flex items-center gap-2 whitespace-nowrap ${
-                activeTab === 'env'
-                  ? 'bg-blue-600 text-white shadow-md shadow-blue-600/30'
-                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
-              }`}
-            >
-              <Key className="w-4 h-4" />
-              <span>Dropbox App Key (Optional)</span>
-            </button>
-
-            <button
-              onClick={() => setActiveTab('checksum')}
-              className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition cursor-pointer flex items-center gap-2 whitespace-nowrap ${
-                activeTab === 'checksum'
-                  ? 'bg-blue-600 text-white shadow-md shadow-blue-600/30'
-                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
-              }`}
-            >
-              <ShieldCheck className="w-4 h-4" />
-              <span>Verify Integrity</span>
-            </button>
           </div>
         </div>
 
@@ -112,8 +81,8 @@ export const QuickStartTabs: React.FC = () => {
               </div>
 
               <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
-                <div className="text-xs text-slate-600 dark:text-slate-400 font-mono">
-                  SHA-256 Windows Checksum: <span className="text-blue-600 dark:text-blue-400">e3b0c44298fc1c149afbf4c8996fb92427ae41e4...</span>
+                <div className="text-xs text-slate-600 dark:text-slate-400 font-medium">
+                  Outbox v2.4.0 · Windows 10/11 (64-bit) · ~42 MB
                 </div>
                 <button
                   onClick={() => alert('Starting Windows Installer download (Outbox_v2.4.0_Setup.exe)...')}
@@ -157,8 +126,8 @@ export const QuickStartTabs: React.FC = () => {
               </div>
 
               <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
-                <div className="text-xs text-slate-600 dark:text-slate-400 font-mono">
-                  SHA-256 macOS Checksum: <span className="text-blue-600 dark:text-blue-400">7a9c2b4e8d1f3014a6bf9c8996ab427ae41e4649...</span>
+                <div className="text-xs text-slate-600 dark:text-slate-400 font-medium">
+                  Outbox v2.4.0 · Apple Silicon & Intel · ~48 MB
                 </div>
                 <button
                   onClick={() => alert('Starting macOS Disk Image download (Outbox_v2.4.0_macOS.dmg)...')}
@@ -167,101 +136,6 @@ export const QuickStartTabs: React.FC = () => {
                   <Download className="w-3.5 h-3.5" />
                   <span>Download Mac (.dmg)</span>
                 </button>
-              </div>
-            </div>
-          )}
-
-          {activeTab === 'env' && (
-            <div className="rounded-3xl bg-white dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-xl dark:shadow-2xl space-y-6">
-              <div>
-                <h3 className="text-xl font-bold text-slate-900 dark:text-white">Configure Your Dropbox App Key</h3>
-                <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
-                  Outbox includes a standard default app key. If you prefer to connect through your own company or personal Dropbox App Console, follow these optional steps:
-                </p>
-              </div>
-
-              <div className="space-y-4 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
-                <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 space-y-2">
-                  <div className="font-bold text-slate-900 dark:text-white flex items-center justify-between">
-                    <span>1. Create an app on Dropbox App Console</span>
-                    <a
-                      href="https://www.dropbox.com/developers/apps"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-xs text-blue-600 dark:text-blue-400 hover:underline flex items-center gap-1"
-                    >
-                      <span>dropbox.com/developers</span>
-                      <ExternalLink className="w-3 h-3" />
-                    </a>
-                  </div>
-                  <p className="text-slate-600 dark:text-slate-400">
-                    Click <strong>Create app</strong> → choose <strong>Scoped access</strong> → select <strong>Full Dropbox</strong> → name your application.
-                  </p>
-                </div>
-
-                <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 space-y-2">
-                  <div className="font-bold text-slate-900 dark:text-white">2. Enable Read Permissions</div>
-                  <p className="text-slate-600 dark:text-slate-400">
-                    Under the <strong>Permissions</strong> tab, ensure read permissions are checked:
-                  </p>
-                  <div className="flex gap-2">
-                    <span className="font-mono text-xs px-2.5 py-1 rounded bg-white dark:bg-slate-900 text-blue-600 dark:text-blue-400 border border-slate-200 dark:border-slate-800">
-                      files.metadata.read
-                    </span>
-                    <span className="font-mono text-xs px-2.5 py-1 rounded bg-white dark:bg-slate-900 text-blue-600 dark:text-blue-400 border border-slate-200 dark:border-slate-800">
-                      sharing.read
-                    </span>
-                  </div>
-                </div>
-
-                <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 space-y-2">
-                  <div className="font-bold text-slate-900 dark:text-white">3. Paste your App Key in Outbox Settings</div>
-                  <p className="text-slate-600 dark:text-slate-400">
-                    Open the Outbox settings panel, paste your App Key, and click save. Outbox handles the secure connection automatically.
-                  </p>
-                </div>
-              </div>
-            </div>
-          )}
-
-          {activeTab === 'checksum' && (
-            <div className="rounded-3xl bg-white dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-xl dark:shadow-2xl space-y-6">
-              <div>
-                <h3 className="text-xl font-bold text-slate-900 dark:text-white">Installer Checksum Verification</h3>
-                <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
-                  Verify the SHA-256 hash of your downloaded binary using your operating system's built-in terminal commands.
-                </p>
-              </div>
-
-              <div className="space-y-4">
-                <div className="relative rounded-2xl bg-slate-900 border border-slate-800 p-5 font-mono text-xs sm:text-sm text-slate-200">
-                  <button
-                    onClick={() => handleCopy(`Get-FileHash Outbox_v2.4.0_Setup.exe -Algorithm SHA256`, 1)}
-                    className="absolute right-4 top-4 p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition cursor-pointer"
-                    title="Copy command"
-                  >
-                    {copiedIndex === 1 ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
-                  </button>
-                  <div className="text-slate-500 mb-1"># On Windows PowerShell:</div>
-                  <div className="text-emerald-400 font-semibold">Get-FileHash Outbox_v2.4.0_Setup.exe -Algorithm SHA256</div>
-                </div>
-
-                <div className="relative rounded-2xl bg-slate-900 border border-slate-800 p-5 font-mono text-xs sm:text-sm text-slate-200">
-                  <button
-                    onClick={() => handleCopy(`shasum -a 256 Outbox_v2.4.0_macOS.dmg`, 2)}
-                    className="absolute right-4 top-4 p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition cursor-pointer"
-                    title="Copy command"
-                  >
-                    {copiedIndex === 2 ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
-                  </button>
-                  <div className="text-slate-500 mb-1"># On macOS Terminal:</div>
-                  <div className="text-sky-400 font-semibold">shasum -a 256 Outbox_v2.4.0_macOS.dmg</div>
-                </div>
-              </div>
-
-              <div className="p-4 rounded-2xl bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-200 dark:border-emerald-900/40 text-xs text-emerald-800 dark:text-emerald-300 flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 text-emerald-500 dark:text-emerald-400 flex-shrink-0" />
-                <span>Verified release checksums ensure zero tampering and 100% bit-for-bit authenticity.</span>
               </div>
             </div>
           )}

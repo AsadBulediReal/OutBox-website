@@ -51,7 +51,6 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
           <div>
             <span className="font-extrabold text-xl tracking-tight text-slate-900 dark:text-white">Outbox</span>
-            <p className="text-[11px] text-slate-500 dark:text-slate-400 hidden sm:block">Dropbox Recursive Downloader</p>
           </div>
         </div>
 
