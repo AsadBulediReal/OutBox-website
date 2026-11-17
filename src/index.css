@@ -1,13 +1,45 @@
 @import "tailwindcss";
 
+@variant dark (&:where(.dark, .dark *));
+
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    overflow-x: hidden;
   }
   
   code, pre, kbd {
     font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   }
+}
+
+/* Full-Page Background Gradient (Covers entire website) */
+.bg-page-gradient {
+  background-color: #f8fafc;
+  background-image: 
+    radial-gradient(ellipse 90% 60% at 50% -10%, rgba(59, 130, 246, 0.22), transparent 70%),
+    radial-gradient(ellipse 60% 45% at 100% 25%, rgba(99, 102, 241, 0.12), transparent 60%),
+    radial-gradient(ellipse 60% 45% at 0% 45%, rgba(56, 189, 248, 0.12), transparent 60%),
+    radial-gradient(ellipse 70% 50% at 95% 75%, rgba(59, 130, 246, 0.12), transparent 60%),
+    radial-gradient(ellipse 85% 55% at 50% 100%, rgba(99, 102, 241, 0.16), transparent 70%);
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.dark .bg-page-gradient {
+  background-color: #060913;
+  background-image: 
+    radial-gradient(ellipse 90% 60% at 50% -10%, rgba(37, 99, 235, 0.32), transparent 70%),
+    radial-gradient(ellipse 60% 45% at 100% 25%, rgba(99, 102, 241, 0.18), transparent 60%),
+    radial-gradient(ellipse 60% 45% at 0% 45%, rgba(14, 165, 233, 0.16), transparent 60%),
+    radial-gradient(ellipse 70% 50% at 95% 75%, rgba(37, 99, 235, 0.18), transparent 60%),
+    radial-gradient(ellipse 85% 55% at 50% 100%, rgba(99, 102, 241, 0.22), transparent 70%);
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 /* Custom smooth scrollbar */
@@ -16,19 +48,22 @@
   height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: rgba(15, 23, 42, 0.6);
+  background: rgba(241, 245, 249, 0.8);
+}
+.dark ::-webkit-scrollbar-track {
+  background: rgba(6, 9, 19, 0.8);
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(59, 130, 246, 0.3);
+  background: rgba(59, 130, 246, 0.35);
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(59, 130, 246, 0.6);
+  background: rgba(59, 130, 246, 0.65);
 }
 
 @keyframes pulseGlow {
   0%, 100% { opacity: 0.35; transform: scale(1); }
-  50% { opacity: 0.6; transform: scale(1.05); }
+  50% { opacity: 0.65; transform: scale(1.04); }
 }
 
 .animate-pulse-glow {
@@ -37,5 +72,20 @@
 
 /* Custom tree line styling */
 .tree-node-active {
-  background: linear-gradient(90deg, rgba(37, 99, 235, 0.15) 0%, rgba(37, 99, 235, 0.03) 100%);
+  background: linear-gradient(90deg, rgba(37, 99, 235, 0.12) 0%, rgba(37, 99, 235, 0.02) 100%);
 }
+
+.dark .tree-node-active {
+  background: linear-gradient(90deg, rgba(37, 99, 235, 0.18) 0%, rgba(37, 99, 235, 0.03) 100%);
+}
+
+/* Desktop window shadow and glow */
+.desktop-window-shadow {
+  box-shadow: 0 20px 50px -12px rgba(0, 0, 0, 0.12), 0 0 25px -5px rgba(37, 99, 235, 0.1);
+}
+
+.dark .desktop-window-shadow {
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.7), 0 0 30px -5px rgba(37, 99, 235, 0.2);
+}
+
+

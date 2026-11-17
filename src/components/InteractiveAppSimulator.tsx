@@ -360,7 +360,7 @@ export const InteractiveAppSimulator: React.FC = () => {
   return (
     <div id="simulator" className="scroll-mt-24 w-full">
       {/* Outer Window Container */}
-      <div className="relative rounded-3xl border border-slate-700/80 bg-slate-900/95 shadow-2xl shadow-blue-950/50 backdrop-blur-xl overflow-hidden">
+      <div className="relative rounded-3xl border border-slate-700/90 bg-slate-900/95 desktop-window-shadow backdrop-blur-xl overflow-hidden ring-1 ring-white/10">
         {/* Top Window Bar (Native OS styling) */}
         <div className="flex items-center justify-between px-4 sm:px-6 py-3 bg-slate-950/90 border-b border-slate-800">
           <div className="flex items-center gap-2">
