@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <!-- Vibrant App Icon Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0066FF"/>
+      <stop offset="45%" stop-color="#0052E0"/>
+      <stop offset="100%" stop-color="#003BB5"/>
+    </linearGradient>
+
+    <!-- Subtle Top Highlight on Squircle -->
+    <linearGradient id="highlightGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.28"/>
+      <stop offset="15%" stop-color="#ffffff" stop-opacity="0.06"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- Arrow Accent Gradient -->
+    <linearGradient id="arrowGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#E2E8F0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Squircle App Badge -->
+  <rect x="24" y="24" width="464" height="464" rx="108" fill="url(#bgGrad)"/>
+  <rect x="24" y="24" width="464" height="464" rx="108" fill="url(#highlightGrad)"/>
+
+  <!-- Bold Upward Extraction Arrow -->
+  <path d="M 256 92
+           L 364 200
+           L 302 200
+           L 302 292
+           C 302 296, 298 300, 294 300
+           L 218 300
+           C 214 300, 210 296, 210 292
+           L 210 200
+           L 148 200
+           Z"
+        fill="url(#arrowGrad)"/>
+
+  <!-- Outbox Tray Base with Front Extraction Cutout Notch -->
+  <path d="M 104 252
+           L 104 368
+           C 104 394, 126 416, 152 416
+           L 360 416
+           C 386 416, 408 394, 408 368
+           L 408 252
+           L 352 252
+           L 352 320
+           C 352 328, 344 336, 336 336
+           L 176 336
+           C 168 336, 160 328, 160 320
+           L 160 252
+           Z"
+        fill="#FFFFFF"/>
+
+  <!-- Subtle Interior Tray Depth Accent -->
+  <path d="M 160 320
+           L 160 328
+           C 160 336, 168 344, 176 344
+           L 336 344
+           C 344 344, 352 336, 352 328
+           L 352 320
+           C 352 326, 344 332, 336 332
+           L 176 332
+           C 168 332, 160 326, 160 320
+           Z"
+        fill="#0052E0"
+        fill-opacity="0.25"/>
+</svg>
