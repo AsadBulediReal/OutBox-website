@@ -57,7 +57,7 @@ export const InteractiveAppSimulator: React.FC = () => {
   const [currentSpeed, setCurrentSpeed] = useState<string>('34.2 MB/s');
   const [elapsedSeconds, setElapsedSeconds] = useState<number>(0);
   const [logs, setLogs] = useState<Array<{ id: number; time: string; tag: string; message: string; color: string }>>([
-    { id: 1, time: '14:20:01', tag: 'SESSION', message: 'Loaded persistent Dropbox OAuth PKCE tokens', color: 'text-blue-400' },
+    { id: 1, time: '14:20:01', tag: 'SESSION', message: 'Dropbox session connected & authenticated', color: 'text-blue-400' },
     { id: 2, time: '14:20:02', tag: 'ACCOUNT', message: 'Connected as Alex Mercer (alex@cinema-studio.io)', color: 'text-emerald-400' },
   ]);
   
@@ -93,7 +93,7 @@ export const InteractiveAppSimulator: React.FC = () => {
     setLoadingStatus('Connecting to Dropbox API endpoint...');
     
     setTimeout(() => {
-      setLoadingStatus('Exchanging PKCE authorization context...');
+      setLoadingStatus('Authenticating session...');
     }, 400);
 
     setTimeout(() => {
@@ -197,8 +197,8 @@ export const InteractiveAppSimulator: React.FC = () => {
         setFileProgress(fp => {
           if (fp >= 100) {
             // Next file simulation
-            addLog('SHA-256', `Verified content_hash [48a9b2... OK] for ${currentFileName}`, 'text-emerald-400');
-            addLog('FINALIZED', `Atomic rename .tmp -> ${currentFileName}`, 'text-blue-300');
+            addLog('VERIFIED', `File integrity verified [OK] for ${currentFileName}`, 'text-emerald-400');
+            addLog('FINALIZED', `Saved ${currentFileName}`, 'text-blue-300');
             return 0;
           }
           return fp + 12;
@@ -207,7 +207,7 @@ export const InteractiveAppSimulator: React.FC = () => {
         setOverallProgress(op => {
           if (op >= 100) {
             setIsTransferring(false);
-            addLog('COMPLETE', '100% Download & SHA-256 verification verified intact!', 'text-emerald-400');
+            addLog('COMPLETE', 'All selected files downloaded and verified intact!', 'text-emerald-400');
             return 100;
           }
           return op + 3;
@@ -236,16 +236,16 @@ export const InteractiveAppSimulator: React.FC = () => {
     setIsPaused(false);
     setOverallProgress(5);
     setFileProgress(15);
-    addLog('START', `Beginning selective stream to ${destPath}`, 'text-blue-400');
-    addLog('RANGE', `HTTP Range 206 Partial Content enabled with 4KB safety buffer`, 'text-sky-300');
+    addLog('START', `Beginning selective download to ${destPath}`, 'text-blue-400');
+    addLog('READY', `Direct streaming enabled with safe resume support`, 'text-sky-300');
   };
 
   const handlePause = () => {
     setIsPaused(!isPaused);
     if (!isPaused) {
-      addLog('PAUSE', 'Transfer paused by user. State preserved in .download_state.json', 'text-amber-400');
+      addLog('PAUSE', 'Transfer paused. Progress preserved safely', 'text-amber-400');
     } else {
-      addLog('RESUME', 'Resuming transfer from saved byte offset via HTTP Range', 'text-sky-400');
+      addLog('RESUME', 'Resuming transfer seamlessly from saved progress', 'text-sky-400');
     }
   };
 
@@ -259,9 +259,9 @@ export const InteractiveAppSimulator: React.FC = () => {
 
   const handleVerifyOnly = () => {
     setActiveStep(2);
-    addLog('VERIFY', 'Starting on-demand SHA-256 local integrity scan...', 'text-indigo-400');
+    addLog('VERIFY', 'Starting local file integrity check...', 'text-indigo-400');
     setTimeout(() => {
-      addLog('AUDIT', 'Read 18 local files, 18 matched official Dropbox content_hash 100%', 'text-emerald-400');
+      addLog('AUDIT', 'Checked 18 local files — all 18 match cloud checksums 100%', 'text-emerald-400');
     }, 1200);
   };
 
@@ -435,7 +435,7 @@ export const InteractiveAppSimulator: React.FC = () => {
             <span className="font-semibold text-slate-200">Alex Mercer</span>
             <span className="text-slate-500 hidden sm:inline">(alex@cinema-studio.io)</span>
             <span className="px-1.5 py-0.5 rounded bg-emerald-500/10 text-emerald-400 text-[10px] border border-emerald-500/20 font-mono">
-              PKCE OAuth OK
+              Connected & Secure
             </span>
           </div>
 
@@ -662,12 +662,12 @@ export const InteractiveAppSimulator: React.FC = () => {
                 </div>
 
                 <div className="p-3.5 rounded-2xl bg-slate-950/80 border border-slate-800">
-                  <span className="text-[11px] text-slate-400">Integrity Hash</span>
+                  <span className="text-[11px] text-slate-400">Integrity Check</span>
                   <div className="text-sm font-bold font-mono text-emerald-400 mt-1 flex items-center gap-1">
                     <ShieldCheck className="w-4 h-4 text-emerald-400" />
-                    <span>SHA-256 OK</span>
+                    <span>Verified OK</span>
                   </div>
-                  <span className="text-[10px] text-slate-500">Dropbox content_hash</span>
+                  <span className="text-[10px] text-slate-500">Cloud match 100%</span>
                 </div>
               </div>
 
@@ -889,14 +889,14 @@ export const InteractiveAppSimulator: React.FC = () => {
                     <span>Auto-Repair Corrupted Files</span>
                   </label>
                   <p className="text-[10px] text-slate-500 mt-1 pl-5">
-                    Automatically deletes and re-fetches any file that fails SHA-256 block hash check.
+                    Automatically re-downloads any file that fails integrity verification.
                   </p>
                 </div>
 
                 <div className="p-3 rounded-xl bg-slate-900 border border-slate-800 text-[11px] text-slate-400 space-y-1">
-                  <p className="font-semibold text-slate-300">HTTP Range Safety Buffer:</p>
-                  <p className="font-mono text-blue-400">4,096 bytes rewind</p>
-                  <p className="text-[10px] text-slate-500">Prevents boundary clipping on resumed network sockets.</p>
+                  <p className="font-semibold text-slate-300">Resume Protection:</p>
+                  <p className="font-mono text-blue-400">Active safety buffer</p>
+                  <p className="text-[10px] text-slate-500">Guarantees clean, uncorrupted files when resuming.</p>
                 </div>
               </div>
             </div>

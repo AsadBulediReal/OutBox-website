@@ -71,7 +71,7 @@ export const ProblemSolution: React.FC = () => {
                   <XCircle className="w-5 h-5 text-rose-500 dark:text-rose-400 flex-shrink-0 mt-0.5" />
                   <div>
                     <strong className="text-slate-900 dark:text-white block font-medium">Silent Archive Corruption</strong>
-                    Browsers don't verify cryptographic checksums. If packets drop during unzipping, files silently fail or fail to decompress.
+                    Browsers don't verify file integrity. If the connection glitches or zips corrupt, files silently break or fail to extract.
                   </div>
                 </li>
               </ul>
@@ -94,7 +94,7 @@ export const ProblemSolution: React.FC = () => {
                   </div>
                   <div>
                     <h3 className="text-xl font-bold text-slate-900 dark:text-white">Outbox Desktop Engine</h3>
-                    <p className="text-xs text-blue-600 dark:text-blue-300">Selective, verified, byte-level streaming</p>
+                    <p className="text-xs text-blue-600 dark:text-blue-300">Selective, reliable, and verified downloads</p>
                   </div>
                 </div>
                 <span className="px-3 py-1 rounded-full bg-blue-500/10 dark:bg-blue-500/20 text-blue-700 dark:text-blue-300 border border-blue-300 dark:border-blue-500/30 text-xs font-bold font-mono">
@@ -114,16 +114,16 @@ export const ProblemSolution: React.FC = () => {
                 <li className="flex items-start gap-3">
                   <CheckCircle2 className="w-5 h-5 text-emerald-500 dark:text-emerald-400 flex-shrink-0 mt-0.5" />
                   <div>
-                    <strong className="text-slate-900 dark:text-white block font-medium">HTTP Range Resumable Transfers</strong>
-                    Transfers use persistent <code className="text-blue-700 dark:text-blue-300 font-mono text-xs">.tmp</code> files and safe 4 KB rewind buffers. Interrupted transfers resume instantly from their last byte offset.
+                    <strong className="text-slate-900 dark:text-white block font-medium">Resume Interrupted Downloads</strong>
+                    Never lose progress when Wi-Fi flickers or your computer sleeps. Outbox safely resumes transfers from where they paused.
                   </div>
                 </li>
 
                 <li className="flex items-start gap-3">
                   <CheckCircle2 className="w-5 h-5 text-emerald-500 dark:text-emerald-400 flex-shrink-0 mt-0.5" />
                   <div>
-                    <strong className="text-slate-900 dark:text-white block font-medium">Official SHA-256 Auto-Healing Integrity</strong>
-                    Calculates Dropbox 4MB block hashes in real-time. Corrupt or interrupted files are quarantined and re-downloaded automatically.
+                    <strong className="text-slate-900 dark:text-white block font-medium">Automatic File Self-Healing</strong>
+                    Checks every file against cloud checksums in real time. Any broken or incomplete file is detected and repaired automatically.
                   </div>
                 </li>
 

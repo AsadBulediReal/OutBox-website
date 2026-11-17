@@ -146,7 +146,7 @@ export const DownloadModal: React.FC<DownloadModalProps> = ({ isOpen, onClose })
 
         {/* Footer info */}
         <div className="text-[11px] text-slate-500 text-center">
-          Native desktop binaries verified with cryptographic content hash. Zero telemetry or third-party servers.
+          Official native desktop binaries. 100% private with zero telemetry or third-party servers.
         </div>
       </div>
     </div>

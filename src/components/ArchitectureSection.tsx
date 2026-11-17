@@ -68,9 +68,9 @@ export const ArchitectureSection: React.FC = () => {
             <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-600 dark:text-emerald-400 mb-4">
               <Cpu className="w-6 h-6" />
             </div>
-            <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2">Non-Blocking QThread Workers</h3>
+            <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2">Non-Blocking Background Workers</h3>
             <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-              Network streaming and cryptographic hashing run completely off the UI thread via PySide6 signals. The interface never freezes, even on 50+ MB/s transfers.
+              Network streaming and file verification run in dedicated background threads. The interface never freezes, even on heavy multi-gigabyte transfers.
             </p>
           </div>
 
@@ -80,7 +80,7 @@ export const ArchitectureSection: React.FC = () => {
             </div>
             <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2">Automated Test Suite</h3>
             <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-              Full automated test coverage with pytest. Validates content_hash block calculations, HTTP Range resume logic, destination matching, and path sanitization.
+              Full automated test coverage with pytest. Validates resume logic, integrity hash calculations, destination matching, and path sanitization.
             </p>
           </div>
         </div>

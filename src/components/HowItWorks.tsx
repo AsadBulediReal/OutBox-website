@@ -7,7 +7,7 @@ export const HowItWorks: React.FC = () => {
       num: '01',
       title: 'Link & Connect',
       tag: 'Step 1',
-      description: 'Authenticate in 1 click using Dropbox PKCE browser OAuth without sharing API secrets. Paste any public, team, or password-protected shared folder link.',
+      description: 'Sign in with 1 click directly through your browser. Paste any public, team, or password-protected shared folder link.',
       details: [
         'Single unified link input with auto-password prompt',
         'Direct destination matching to prevent duplicate folders',
@@ -35,10 +35,10 @@ export const HowItWorks: React.FC = () => {
       num: '03',
       title: 'Stream & Verify',
       tag: 'Step 3',
-      description: 'Download files with HTTP Range resumability. Each file is verified against Dropbox SHA-256 block hashes (content_hash) with automatic self-repair.',
+      description: 'Download your files at maximum speed with automatic resume and file integrity checks so nothing arrives corrupted.',
       details: [
-        'Safe 4 KB rewind buffer on paused/resumed transfers',
-        'Real-time transfer speed, elapsed time, and ETA telemetry',
+        'Automatic pause and resume with zero lost progress',
+        'Real-time transfer speed, elapsed time, and ETA',
         'Dedicated "Verify Files" button to audit existing folders',
       ],
       icon: <DownloadCloud className="w-6 h-6 text-emerald-400" />,

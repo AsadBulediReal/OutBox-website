@@ -46,26 +46,26 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDownload, onScrollToSimulator 
 
           {/* Subtitle */}
           <p className="mt-6 text-lg sm:text-xl text-slate-600 dark:text-slate-300 max-w-3xl leading-relaxed">
-            Stop downloading 100+ GB <code className="text-blue-700 bg-blue-100/70 border border-blue-200 dark:text-blue-300 dark:bg-blue-950/80 dark:border-blue-800/60 px-2 py-0.5 rounded text-sm font-mono">.zip</code> archives that fail at 99%. Outbox browses remote Dropbox shared folder hierarchies, lets you cherry-pick only what you want, and downloads with SHA-256 verified integrity and byte-level resume.
+            Stop downloading 100+ GB <code className="text-blue-700 bg-blue-100/70 border border-blue-200 dark:text-blue-300 dark:bg-blue-950/80 dark:border-blue-800/60 px-2 py-0.5 rounded text-sm font-mono">.zip</code> archives that fail halfway. Outbox lets you browse shared folders, pick only the files you need, and download them reliably with automatic resume and file verification.
           </p>
 
           {/* Key Value Propositions Row */}
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3 text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300">
             <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800/90 hover:border-blue-400 shadow-xs backdrop-blur-sm">
               <FolderTree className="w-4 h-4 text-blue-600 dark:text-blue-400" />
-              <span>No 20 GB / 10k File Zip Cap</span>
+              <span>No File or Size Limits</span>
             </div>
             <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800/90 hover:border-blue-400 shadow-xs backdrop-blur-sm">
               <RotateCcw className="w-4 h-4 text-sky-600 dark:text-sky-400" />
-              <span>Byte-Range Resumable Streams</span>
+              <span>Pause & Resume Anytime</span>
             </div>
             <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800/90 hover:border-blue-400 shadow-xs backdrop-blur-sm">
               <ShieldCheck className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
-              <span>SHA-256 Auto-Healing</span>
+              <span>Corrupted File Self-Healing</span>
             </div>
             <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800/90 hover:border-blue-400 shadow-xs backdrop-blur-sm">
               <KeyRound className="w-4 h-4 text-amber-600 dark:text-amber-400" />
-              <span>Zero-Secret PKCE OAuth</span>
+              <span>Direct Secure Sign-In</span>
             </div>
           </div>
 
@@ -118,7 +118,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDownload, onScrollToSimulator 
               <div className="flex items-center gap-1.5 text-emerald-600 dark:text-emerald-400 font-extrabold text-2xl sm:text-3xl font-mono">
                 100<span className="text-base font-sans font-semibold text-slate-400">%</span>
               </div>
-              <span className="text-xs text-slate-500 dark:text-slate-400 mt-1">SHA-256 Hash Verified</span>
+              <span className="text-xs text-slate-500 dark:text-slate-400 mt-1">Verified File Integrity</span>
             </div>
 
             <div className="flex flex-col items-center justify-center p-3 text-center border-l border-slate-200 dark:border-slate-800">

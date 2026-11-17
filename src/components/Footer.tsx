@@ -22,7 +22,7 @@ export const Footer: React.FC = () => {
               </span>
             </div>
             <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 max-w-sm leading-relaxed">
-              The high-performance selective downloader for massive Dropbox shared links. Built with PySide6, byte-range HTTP streaming, and cryptographic SHA-256 block verification.
+              The fast, reliable selective downloader for massive Dropbox shared links. Download only the files you need without limits, corrupted archives, or wasted disk space.
             </p>
             <div className="flex items-center gap-3 pt-2 text-xs text-slate-500 dark:text-slate-400">
               <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
@@ -56,23 +56,23 @@ export const Footer: React.FC = () => {
             <ul className="space-y-2 text-xs">
               <li className="flex items-center gap-1.5 text-slate-600 dark:text-slate-400">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 dark:bg-emerald-400" />
-                PySide6 Native GUI Engine
+                PySide6 Native Desktop App
               </li>
               <li className="flex items-center gap-1.5 text-slate-600 dark:text-slate-400">
                 <span className="w-1.5 h-1.5 rounded-full bg-blue-500 dark:bg-blue-400" />
-                Dropbox content_hash (SHA-256)
+                Bit-for-Bit File Integrity
               </li>
               <li className="flex items-center gap-1.5 text-slate-600 dark:text-slate-400">
                 <span className="w-1.5 h-1.5 rounded-full bg-sky-500 dark:bg-sky-400" />
-                HTTP Range 206 Resumable Streaming
+                Automatic Resume on Network Drop
               </li>
               <li className="flex items-center gap-1.5 text-slate-600 dark:text-slate-400">
                 <span className="w-1.5 h-1.5 rounded-full bg-amber-500 dark:bg-amber-400" />
-                OAuth 2.0 PKCE (Zero Secrets)
+                Secure Direct Browser Sign-In
               </li>
               <li className="flex items-center gap-1.5 text-slate-600 dark:text-slate-400">
                 <span className="w-1.5 h-1.5 rounded-full bg-purple-500 dark:bg-purple-400" />
-                Standalone Native Binaries
+                Zero Third-Party Servers
               </li>
             </ul>
           </div>

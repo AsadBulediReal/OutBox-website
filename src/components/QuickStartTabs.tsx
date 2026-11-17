@@ -106,8 +106,8 @@ export const QuickStartTabs: React.FC = () => {
                 </div>
                 <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800">
                   <div className="text-xs text-slate-400 dark:text-slate-500 font-mono font-bold">STEP 3</div>
-                  <h4 className="text-sm font-bold text-slate-900 dark:text-white mt-1">Browser OAuth Sign-In</h4>
-                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">Click "Connect Dropbox" to authenticate via PKCE without sharing passwords.</p>
+                  <h4 className="text-sm font-bold text-slate-900 dark:text-white mt-1">Browser Sign-In</h4>
+                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">Click "Connect Dropbox" to sign in securely through your browser.</p>
                 </div>
               </div>
 
@@ -217,7 +217,7 @@ export const QuickStartTabs: React.FC = () => {
                 <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 space-y-2">
                   <div className="font-bold text-slate-900 dark:text-white">3. Paste your App Key in Outbox Settings</div>
                   <p className="text-slate-600 dark:text-slate-400">
-                    Open the Outbox settings panel, paste your App Key, and click save. Outbox will automatically handle the PKCE flow.
+                    Open the Outbox settings panel, paste your App Key, and click save. Outbox handles the secure connection automatically.
                   </p>
                 </div>
               </div>
@@ -227,7 +227,7 @@ export const QuickStartTabs: React.FC = () => {
           {activeTab === 'checksum' && (
             <div className="rounded-3xl bg-white dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-xl dark:shadow-2xl space-y-6">
               <div>
-                <h3 className="text-xl font-bold text-slate-900 dark:text-white">Cryptographic Checksum Verification</h3>
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white">Installer Checksum Verification</h3>
                 <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
                   Verify the SHA-256 hash of your downloaded binary using your operating system's built-in terminal commands.
                 </p>
