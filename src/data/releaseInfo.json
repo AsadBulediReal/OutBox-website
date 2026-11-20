@@ -1,8 +1,10 @@
 {
-  "version": "2.4.0",
-  "winFileName": "Outbox_Downloader_v2.4.0_Setup.exe",
-  "winDownloadUrl": "https://github.com/AsadBulediReal/dropbox-downloader/releases/latest",
-  "macFileName": "Outbox_Downloader_v2.4.0_macOS.dmg",
-  "macDownloadUrl": "https://github.com/AsadBulediReal/dropbox-downloader/releases/latest",
+  "version": "1.0.1",
+  "tag": "v1.0.1",
+  "winFileName": "Outbox_Downloader_Windows_Setup_v1.0.1.exe",
+  "macFileName": "Outbox_Downloader_macOS_v1.0.1.dmg",
+  "winDownloadUrl": "https://github.com/AsadBulediReal/dropbox-downloader/releases/download/v1.0.1/Outbox_Downloader_Windows_Setup_v1.0.1.exe",
+  "macDownloadUrl": "https://github.com/AsadBulediReal/dropbox-downloader/releases/download/v1.0.1/Outbox_Downloader_macOS_v1.0.1.dmg",
+  "publishedAt": "2026-11-20",
   "releaseDate": "2026-11-20"
 }
