@@ -1,6 +1,7 @@
 import React from 'react';
 import { X, Download, Monitor, Apple } from 'lucide-react';
 import { ModalSponsorAd } from './ads/ModalSponsorAd';
+import releaseInfo from '../data/releaseInfo.json';
 
 interface DownloadModalProps {
   isOpen: boolean;
@@ -11,9 +12,9 @@ export const DownloadModal: React.FC<DownloadModalProps> = ({ isOpen, onClose })
   if (!isOpen) return null;
 
   const handleDownload = (os: 'win' | 'mac') => {
-    // Generate simulated download trigger
-    const fileName = os === 'win' ? 'Outbox_Downloader_v2.4.0_Setup.exe' : 'Outbox_Downloader_v2.4.0_macOS.dmg';
-    alert(`Starting download for ${fileName}...\n\nOperating System: ${os === 'win' ? 'Windows 10/11 (64-bit)' : 'macOS (Apple Silicon & Intel)'}`);
+    // Triggers direct browser download of the installer from GitHub Releases
+    const downloadUrl = os === 'win' ? releaseInfo.winDownloadUrl : releaseInfo.macDownloadUrl;
+    window.location.href = downloadUrl;
   };
 
   return (
@@ -34,13 +35,15 @@ export const DownloadModal: React.FC<DownloadModalProps> = ({ isOpen, onClose })
           </div>
           <div className="select-none">
             <h3 className="text-xl font-extrabold text-slate-900 dark:text-white select-none">Download Outbox Downloader</h3>
-            <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 select-none">Version 2.4.0 Pro — Standalone Installers (outboxdownloader.com)</p>
+            <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 select-none">
+              Version {releaseInfo.version} — Standalone Installers
+            </p>
           </div>
         </div>
 
         {/* Download Options (Windows and Mac Only) */}
         <div className="space-y-3">
-          {/* Option 1: Windows (.exe) */}
+          {/* Windows (.exe) */}
           <button
             onClick={() => handleDownload('win')}
             className="w-full flex items-center justify-between p-4 rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white shadow-lg shadow-blue-500/25 transition group cursor-pointer text-left"
@@ -50,19 +53,17 @@ export const DownloadModal: React.FC<DownloadModalProps> = ({ isOpen, onClose })
                 <Monitor className="w-5 h-5" />
               </div>
               <div>
-                <span className="font-bold text-sm block">Outbox_Downloader_v2.4.0_Setup.exe</span>
-                <span className="text-xs text-blue-100">Windows 10 & 11 (64-bit installer) (~42 MB)</span>
+                <span className="font-bold text-sm block">{releaseInfo.winFileName}</span>
+                <span className="text-xs text-blue-100">Windows 10 & 11 (64-bit installer)</span>
               </div>
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-xs font-mono font-bold px-2.5 py-1 rounded-lg bg-white/20">
-                .EXE
-              </span>
+              <span className="text-xs font-mono font-bold px-2.5 py-1 rounded-lg bg-white/20">.EXE</span>
               <Download className="w-4 h-4 group-hover:translate-y-0.5 transition" />
             </div>
           </button>
 
-          {/* Option 2: macOS (.dmg) */}
+          {/* macOS (.dmg) */}
           <button
             onClick={() => handleDownload('mac')}
             className="w-full flex items-center justify-between p-4 rounded-2xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800/90 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-700/80 text-slate-900 dark:text-white transition group cursor-pointer text-left"
@@ -72,14 +73,12 @@ export const DownloadModal: React.FC<DownloadModalProps> = ({ isOpen, onClose })
                 <Apple className="w-5 h-5" />
               </div>
               <div>
-                <span className="font-bold text-sm block">Outbox_Downloader_v2.4.0_macOS.dmg</span>
-                <span className="text-xs text-slate-500 dark:text-slate-400">macOS Universal: Apple Silicon (M1-M4) & Intel (~48 MB)</span>
+                <span className="font-bold text-sm block">{releaseInfo.macFileName}</span>
+                <span className="text-xs text-slate-500 dark:text-slate-400">macOS Universal: Apple Silicon & Intel</span>
               </div>
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-xs font-mono font-bold px-2.5 py-1 rounded-lg bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300">
-                .DMG
-              </span>
+              <span className="text-xs font-mono font-bold px-2.5 py-1 rounded-lg bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300">.DMG</span>
               <Download className="w-4 h-4 group-hover:translate-y-0.5 transition" />
             </div>
           </button>
