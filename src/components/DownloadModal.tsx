@@ -1,5 +1,6 @@
 import React from 'react';
 import { X, Download, Monitor, Apple } from 'lucide-react';
+import { ModalSponsorAd } from './ads/ModalSponsorAd';
 
 interface DownloadModalProps {
   isOpen: boolean;
@@ -11,7 +12,7 @@ export const DownloadModal: React.FC<DownloadModalProps> = ({ isOpen, onClose })
 
   const handleDownload = (os: 'win' | 'mac') => {
     // Generate simulated download trigger
-    const fileName = os === 'win' ? 'Outbox_v2.4.0_Setup.exe' : 'Outbox_v2.4.0_macOS.dmg';
+    const fileName = os === 'win' ? 'Outbox_Downloader_v2.4.0_Setup.exe' : 'Outbox_Downloader_v2.4.0_macOS.dmg';
     alert(`Starting download for ${fileName}...\n\nOperating System: ${os === 'win' ? 'Windows 10/11 (64-bit)' : 'macOS (Apple Silicon & Intel)'}`);
   };
 
@@ -27,13 +28,13 @@ export const DownloadModal: React.FC<DownloadModalProps> = ({ isOpen, onClose })
         </button>
 
         {/* Header */}
-        <div className="flex items-center gap-4">
-          <div className="w-14 h-14 rounded-2xl bg-blue-600 flex items-center justify-center p-2.5 shadow-lg shadow-blue-600/30">
-            <img src="/outbox_icon.svg" alt="Outbox" className="w-full h-full object-contain filter drop-shadow" />
+        <div className="flex items-center gap-4 select-none">
+          <div className="w-14 h-14 rounded-2xl bg-blue-600 flex items-center justify-center p-2.5 shadow-lg shadow-blue-600/30 select-none">
+            <img src="/outbox_icon.svg" alt="Outbox Downloader" className="w-full h-full object-contain filter drop-shadow select-none pointer-events-none" draggable={false} />
           </div>
-          <div>
-            <h3 className="text-xl font-extrabold text-slate-900 dark:text-white">Download Outbox Desktop</h3>
-            <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">Version 2.4.0 Pro — Standalone Installers</p>
+          <div className="select-none">
+            <h3 className="text-xl font-extrabold text-slate-900 dark:text-white select-none">Download Outbox Downloader</h3>
+            <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 select-none">Version 2.4.0 Pro — Standalone Installers (outboxdownloader.com)</p>
           </div>
         </div>
 
@@ -49,7 +50,7 @@ export const DownloadModal: React.FC<DownloadModalProps> = ({ isOpen, onClose })
                 <Monitor className="w-5 h-5" />
               </div>
               <div>
-                <span className="font-bold text-sm block">Outbox_v2.4.0_Setup.exe</span>
+                <span className="font-bold text-sm block">Outbox_Downloader_v2.4.0_Setup.exe</span>
                 <span className="text-xs text-blue-100">Windows 10 & 11 (64-bit installer) (~42 MB)</span>
               </div>
             </div>
@@ -71,7 +72,7 @@ export const DownloadModal: React.FC<DownloadModalProps> = ({ isOpen, onClose })
                 <Apple className="w-5 h-5" />
               </div>
               <div>
-                <span className="font-bold text-sm block">Outbox_v2.4.0_macOS.dmg</span>
+                <span className="font-bold text-sm block">Outbox_Downloader_v2.4.0_macOS.dmg</span>
                 <span className="text-xs text-slate-500 dark:text-slate-400">macOS Universal: Apple Silicon (M1-M4) & Intel (~48 MB)</span>
               </div>
             </div>
@@ -83,6 +84,9 @@ export const DownloadModal: React.FC<DownloadModalProps> = ({ isOpen, onClose })
             </div>
           </button>
         </div>
+
+        {/* Sponsor Companion Ad */}
+        <ModalSponsorAd />
 
         {/* Footer info */}
         <div className="text-[11px] text-slate-500 text-center">

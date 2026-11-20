@@ -66,12 +66,12 @@ export const QuickStartTabs: React.FC = () => {
                 <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800">
                   <div className="text-xs text-slate-400 dark:text-slate-500 font-mono font-bold">STEP 1</div>
                   <h4 className="text-sm font-bold text-slate-900 dark:text-white mt-1">Download Installer</h4>
-                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">Directly obtain the signed <code className="text-blue-600 dark:text-blue-400">Outbox_v2.4.0_Setup.exe</code> package.</p>
+                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">Directly obtain the signed <code className="text-blue-600 dark:text-blue-400">Outbox_Downloader_v2.4.0_Setup.exe</code> package.</p>
                 </div>
                 <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800">
                   <div className="text-xs text-slate-400 dark:text-slate-500 font-mono font-bold">STEP 2</div>
-                  <h4 className="text-sm font-bold text-slate-900 dark:text-white mt-1">Launch Outbox</h4>
-                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">Run the installer. Outbox launches with a native, responsive desktop GUI.</p>
+                  <h4 className="text-sm font-bold text-slate-900 dark:text-white mt-1">Launch Outbox Downloader</h4>
+                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">Run the installer. Outbox Downloader launches with a native, responsive desktop GUI.</p>
                 </div>
                 <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800">
                   <div className="text-xs text-slate-400 dark:text-slate-500 font-mono font-bold">STEP 3</div>
@@ -82,10 +82,10 @@ export const QuickStartTabs: React.FC = () => {
 
               <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
                 <div className="text-xs text-slate-600 dark:text-slate-400 font-medium">
-                  Outbox v2.4.0 · Windows 10/11 (64-bit) · ~42 MB
+                  Outbox Downloader v2.4.0 · Windows 10/11 (64-bit) · ~42 MB
                 </div>
                 <button
-                  onClick={() => alert('Starting Windows Installer download (Outbox_v2.4.0_Setup.exe)...')}
+                  onClick={() => alert('Starting Windows Installer download (Outbox_Downloader_v2.4.0_Setup.exe)...')}
                   className="px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs shadow-md shadow-blue-600/30 transition whitespace-nowrap cursor-pointer flex items-center gap-1.5"
                 >
                   <Download className="w-3.5 h-3.5" />
@@ -111,26 +111,26 @@ export const QuickStartTabs: React.FC = () => {
                 <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800">
                   <div className="text-xs text-slate-400 dark:text-slate-500 font-mono font-bold">STEP 1</div>
                   <h4 className="text-sm font-bold text-slate-900 dark:text-white mt-1">Download .dmg</h4>
-                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">Download the verified <code className="text-blue-600 dark:text-blue-400">Outbox_v2.4.0_macOS.dmg</code> image (~48 MB).</p>
+                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">Download the verified <code className="text-blue-600 dark:text-blue-400">Outbox_Downloader_v2.4.0_macOS.dmg</code> image (~48 MB).</p>
                 </div>
                 <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800">
                   <div className="text-xs text-slate-400 dark:text-slate-500 font-mono font-bold">STEP 2</div>
                   <h4 className="text-sm font-bold text-slate-900 dark:text-white mt-1">Drag to Applications</h4>
-                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">Open the disk image and drag the Outbox icon into your Applications folder.</p>
+                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">Open the disk image and drag the Outbox Downloader icon into your Applications folder.</p>
                 </div>
                 <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800">
                   <div className="text-xs text-slate-400 dark:text-slate-500 font-mono font-bold">STEP 3</div>
                   <h4 className="text-sm font-bold text-slate-900 dark:text-white mt-1">Ready to Stream</h4>
-                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">Launch Outbox from Spotlight or Launchpad and paste your first Dropbox link.</p>
+                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">Launch Outbox Downloader from Spotlight or Launchpad and paste your first Dropbox link.</p>
                 </div>
               </div>
 
               <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
                 <div className="text-xs text-slate-600 dark:text-slate-400 font-medium">
-                  Outbox v2.4.0 · Apple Silicon & Intel · ~48 MB
+                  Outbox Downloader v2.4.0 · Apple Silicon & Intel · ~48 MB
                 </div>
                 <button
-                  onClick={() => alert('Starting macOS Disk Image download (Outbox_v2.4.0_macOS.dmg)...')}
+                  onClick={() => alert('Starting macOS Disk Image download (Outbox_Downloader_v2.4.0_macOS.dmg)...')}
                   className="px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs shadow-md shadow-blue-600/30 transition whitespace-nowrap cursor-pointer flex items-center gap-1.5"
                 >
                   <Download className="w-3.5 h-3.5" />

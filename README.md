@@ -1,6 +1,6 @@
-# Outbox — Official Product Website
+# Outbox Downloader — Official Website (outboxdownloader.com)
 
-A modern, high-performance product landing page and interactive application simulator for **Outbox**, built with **React 19**, **TypeScript**, **Tailwind CSS v4**, and **Lucide Icons**.
+A modern, high-performance product landing page and interactive application simulator for **Outbox Downloader** (`https://outboxdownloader.com`), built with **React 19**, **TypeScript**, **Tailwind CSS v4**, and **Lucide Icons**.
 
 ## 🚀 Features
 

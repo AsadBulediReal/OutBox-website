@@ -1,7 +1,13 @@
 import React from 'react';
-import { ArrowUp, Monitor, Apple } from 'lucide-react';
+import { ArrowUp, Monitor, Apple, Sparkles } from 'lucide-react';
 
-export const Footer: React.FC = () => {
+interface FooterProps {
+  onOpenAutoAds?: () => void;
+}
+
+const CURRENT_YEAR = new Date().getFullYear();
+
+export const Footer: React.FC<FooterProps> = ({ onOpenAutoAds }) => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -12,17 +18,17 @@ export const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
           {/* Brand Col */}
           <div className="md:col-span-2 space-y-4">
-            <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-xl bg-blue-600 flex items-center justify-center p-1.5 shadow-md shadow-blue-600/30">
-                <img src="/outbox_icon.svg" alt="Outbox" className="w-full h-full object-contain filter drop-shadow" />
+            <div className="flex items-center gap-3 select-none">
+              <div className="w-9 h-9 rounded-xl bg-blue-600 flex items-center justify-center p-1.5 shadow-md shadow-blue-600/30 select-none">
+                <img src="/outbox_icon.svg" alt="Outbox Downloader" className="w-full h-full object-contain filter drop-shadow select-none pointer-events-none" draggable={false} />
               </div>
-              <span className="text-xl font-extrabold text-slate-900 dark:text-white">Outbox</span>
-              <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20">
+              <span className="text-xl font-extrabold text-slate-900 dark:text-white select-none">Outbox Downloader</span>
+              <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20 select-none">
                 v2.4 Pro
               </span>
             </div>
             <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 max-w-sm leading-relaxed">
-              The fast, reliable selective downloader for massive Dropbox shared links. Download only the files you need without limits, corrupted archives, or wasted disk space.
+              The fast, reliable selective downloader for massive Dropbox shared links. Official website: <a href="https://outboxdownloader.com" className="text-blue-600 dark:text-blue-400 hover:underline">outboxdownloader.com</a>.
             </p>
             <div className="flex items-center gap-3 pt-2 text-xs text-slate-500 dark:text-slate-400">
               <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
@@ -80,12 +86,21 @@ export const Footer: React.FC = () => {
 
         {/* Bottom Disclaimer & Copyright */}
         <div className="pt-8 border-t border-slate-200 dark:border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-          <div>
-            © {new Date().getFullYear()} Outbox Project. All rights reserved.
+          <div className="flex items-center gap-3">
+            <span>© {CURRENT_YEAR} Outbox Downloader (outboxdownloader.com). All rights reserved.</span>
+            {onOpenAutoAds && (
+              <button
+                onClick={onOpenAutoAds}
+                className="inline-flex items-center gap-1 text-[11px] font-semibold text-blue-600 dark:text-blue-400 hover:underline cursor-pointer"
+              >
+                <Sparkles className="w-3 h-3" />
+                <span>Auto Ads Setup</span>
+              </button>
+            )}
           </div>
           
           <div className="text-center sm:text-right max-w-md">
-            Outbox is an independent tool and is not affiliated, associated, authorized, endorsed by, or in any way officially connected with Dropbox, Inc.
+            Outbox Downloader is an independent utility and is not affiliated, associated, authorized, endorsed by, or in any way officially connected with Dropbox, Inc.
           </div>
 
           <button

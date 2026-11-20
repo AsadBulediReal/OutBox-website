@@ -10,6 +10,11 @@
   body {
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     overflow-x: hidden;
+    caret-color: transparent;
+  }
+
+  input, textarea, [contenteditable="true"] {
+    caret-color: auto;
   }
   
   code, pre, kbd {
@@ -86,6 +91,18 @@
 
 .dark .desktop-window-shadow {
   box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.7), 0 0 30px -5px rgba(37, 99, 235, 0.2);
+}
+
+/* Side Rail Skyscraper Ad display rule - only displays on ultra-wide screens to prevent content overlap */
+@media (max-width: 1649px) {
+  .side-rail-ad {
+    display: none !important;
+  }
+}
+@media (min-width: 1650px) {
+  .side-rail-ad {
+    display: flex !important;
+  }
 }
 
 

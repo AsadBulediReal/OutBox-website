@@ -12,12 +12,17 @@ import { UseCasesSection } from './components/UseCasesSection';
 import { FaqSection } from './components/FaqSection';
 import { DownloadModal } from './components/DownloadModal';
 import { Footer } from './components/Footer';
+import { SideRailAds } from './components/ads/SideRailAds';
+import { LeaderboardAd } from './components/ads/LeaderboardAd';
+import { FloatingBottomAd } from './components/ads/FloatingBottomAd';
+import { AutoAdsManager } from './components/ads/AutoAdsManager';
 import { Download, Apple } from 'lucide-react';
 
 export function App() {
   // Light mode is default as requested
   const [darkMode, setDarkMode] = useState<boolean>(false);
   const [isDownloadOpen, setIsDownloadOpen] = useState<boolean>(false);
+  const [isAutoAdsOpen, setIsAutoAdsOpen] = useState<boolean>(false);
 
   useEffect(() => {
     if (darkMode) {
@@ -46,6 +51,9 @@ export function App() {
         onScrollToSimulator={handleScrollToSimulator}
       />
 
+      {/* Side Rail Skyscraper Ads (Left and Right gutters on large screens) */}
+      <SideRailAds onOpenAutoAds={() => setIsAutoAdsOpen(true)} />
+
       <main>
         {/* Hero Section */}
         <Hero
@@ -70,6 +78,9 @@ export function App() {
           <InteractiveAppSimulator />
         </section>
 
+        {/* In-Between Leaderboard Ad */}
+        <LeaderboardAd onOpenAutoAds={() => setIsAutoAdsOpen(true)} />
+
         {/* Problem vs Solution Section */}
         <ProblemSolution />
 
@@ -91,6 +102,9 @@ export function App() {
         {/* Setup & Quick-Start Tabs */}
         <QuickStartTabs />
 
+        {/* Second In-Between Leaderboard Ad */}
+        <LeaderboardAd defaultIndex={3} onOpenAutoAds={() => setIsAutoAdsOpen(true)} />
+
         {/* Frequently Asked Questions */}
         <FaqSection />
 
@@ -98,14 +112,14 @@ export function App() {
         <section className="py-20 relative overflow-hidden">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div className="relative rounded-3xl p-10 sm:p-14 bg-gradient-to-b from-blue-50 to-indigo-50/50 dark:from-blue-900/40 dark:to-slate-900/90 border border-blue-200 dark:border-blue-500/30 shadow-2xl backdrop-blur-xl">
-              <div className="w-16 h-16 rounded-2xl bg-blue-600 mx-auto flex items-center justify-center p-3 shadow-xl shadow-blue-500/40 mb-6">
-                <img src="/outbox_icon.svg" alt="Outbox" className="w-full h-full object-contain filter drop-shadow" />
+              <div className="w-16 h-16 rounded-2xl bg-blue-600 mx-auto flex items-center justify-center p-3 shadow-xl shadow-blue-500/40 mb-6 select-none">
+                <img src="/outbox_icon.svg" alt="Outbox" className="w-full h-full object-contain filter drop-shadow select-none pointer-events-none" draggable={false} />
               </div>
               <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight">
                 Stop Wrestling with 100 GB ZIP Files.
               </h2>
               <p className="mt-4 text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed">
-                Download Outbox today. Selective, resumable, and cryptographically verified downloads from any Dropbox shared link.
+                Download Outbox Downloader today. Selective, resumable, and cryptographically verified downloads from any Dropbox shared link. Official domain: outboxdownloader.com.
               </p>
               <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
                 <button
@@ -129,12 +143,21 @@ export function App() {
       </main>
 
       {/* Footer */}
-      <Footer />
+      <Footer onOpenAutoAds={() => setIsAutoAdsOpen(true)} />
 
       {/* Download Modal */}
       <DownloadModal
         isOpen={isDownloadOpen}
         onClose={() => setIsDownloadOpen(false)}
+      />
+
+      {/* Floating Sticky Bottom Ad Banner */}
+      <FloatingBottomAd onOpenAutoAds={() => setIsAutoAdsOpen(true)} />
+
+      {/* Auto Ads Controller Modal */}
+      <AutoAdsManager
+        isConfigOpen={isAutoAdsOpen}
+        onCloseConfig={() => setIsAutoAdsOpen(false)}
       />
     </div>
   );

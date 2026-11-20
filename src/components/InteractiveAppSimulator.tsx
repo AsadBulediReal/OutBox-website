@@ -368,7 +368,7 @@ export const InteractiveAppSimulator: React.FC = () => {
             <div className="w-3 h-3 rounded-full bg-amber-500/80" />
             <div className="w-3 h-3 rounded-full bg-emerald-500/80" />
             <span className="ml-2 text-xs font-semibold text-slate-400 hidden sm:inline">
-              Outbox Pro [PySide6 Engine]
+              Outbox Downloader Pro [PySide6 Engine]
             </span>
           </div>
 
@@ -604,7 +604,7 @@ export const InteractiveAppSimulator: React.FC = () => {
                     <strong className="text-white font-mono">{selectedCount}</strong> items (
                     <strong className="text-blue-400 font-mono">{formattedSelectedSize}</strong> of {selectedPreset.totalSize})
                   </span>
-                  <span className="text-slate-600">|</span>
+                  <span className="text-slate-600 dark:text-slate-600 text-[10px] select-none">•</span>
                   <span className="text-emerald-400 text-[11px] flex items-center gap-1">
                     <CheckCircle2 className="w-3 h-3" />
                     Bypasses 20 GB full-archive download
@@ -902,7 +902,7 @@ export const InteractiveAppSimulator: React.FC = () => {
             </div>
 
             <div className="text-[11px] text-slate-500 text-center border-t border-slate-800 pt-3">
-              Outbox Core v2.4 (PySide6 / Python 3.11+)
+              Outbox Downloader Core v2.4 (PySide6 / Python 3.11+)
             </div>
           </div>
         )}

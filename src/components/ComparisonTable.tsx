@@ -30,10 +30,10 @@ export const ComparisonTable: React.FC = () => {
             Head-to-Head Comparison
           </span>
           <h2 className="mt-4 text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-            How Outbox Compares
+            How Outbox Downloader Compares
           </h2>
           <p className="mt-4 text-base sm:text-lg text-slate-600 dark:text-slate-300">
-            See how Outbox matches up against traditional web downloads, the official desktop client, and complex CLI utilities.
+            See how Outbox Downloader matches up against traditional web downloads, the official desktop client, and complex CLI utilities.
           </p>
         </div>
 
@@ -48,7 +48,7 @@ export const ComparisonTable: React.FC = () => {
                   </th>
                   <th className="py-5 px-6 text-sm font-bold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-600/10 border-x border-blue-200 dark:border-blue-500/20 text-center w-1/6">
                     <div className="flex flex-col items-center">
-                      <span className="text-base font-extrabold text-blue-600 dark:text-white">Outbox</span>
+                      <span className="text-base font-extrabold text-blue-600 dark:text-white">Outbox Downloader</span>
                       <span className="text-[10px] text-blue-600 dark:text-blue-300 uppercase tracking-widest font-mono">Recommended</span>
                     </div>
                   </th>

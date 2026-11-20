@@ -42,17 +42,29 @@ export const Navbar: React.FC<NavbarProps> = ({
     <header className="sticky top-0 z-50 backdrop-blur-xl bg-white/85 dark:bg-[#060913]/85 border-b border-slate-200 dark:border-slate-800/80 transition-colors shadow-xs dark:shadow-none">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between">
         {/* Brand */}
-        <div className="flex items-center gap-3 shrink-0">
-          <div className="relative group cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          className="flex items-center gap-3 shrink-0 text-left cursor-pointer select-none caret-transparent outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded-xl group transition-transform active:scale-98"
+          aria-label="Outbox Downloader - Home"
+        >
+          <div className="relative select-none pointer-events-none">
             <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl blur-sm opacity-60 group-hover:opacity-100 transition duration-300"></div>
-            <div className="relative w-10 h-10 rounded-xl overflow-hidden shadow-lg bg-blue-600 flex items-center justify-center p-1.5 border border-white/20">
-              <img src="/outbox_icon.svg" alt="Outbox Icon" className="w-full h-full object-contain filter drop-shadow" />
+            <div className="relative w-10 h-10 rounded-xl overflow-hidden shadow-lg bg-blue-600 flex items-center justify-center p-1.5 border border-white/20 select-none">
+              <img 
+                src="/outbox_icon.svg" 
+                alt="Outbox Icon" 
+                className="w-full h-full object-contain filter drop-shadow select-none pointer-events-none" 
+                draggable={false}
+              />
             </div>
           </div>
-          <div>
-            <span className="font-extrabold text-xl tracking-tight text-slate-900 dark:text-white">Outbox</span>
+          <div className="select-none pointer-events-none">
+            <span className="font-extrabold text-xl tracking-tight text-slate-900 dark:text-white flex items-center gap-1.5 select-none">
+              <span>Outbox</span>
+              <span className="text-blue-600 dark:text-blue-400 font-bold text-sm tracking-normal">Downloader</span>
+            </span>
           </div>
-        </div>
+        </button>
 
         {/* Desktop Navigation Links (Ordered to match page flow) */}
         <nav className="hidden md:flex items-center gap-4 lg:gap-6 xl:gap-7 text-xs lg:text-sm font-medium text-slate-600 dark:text-slate-300">

@@ -26,7 +26,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDownload, onScrollToSimulator 
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-blue-500/10 via-sky-500/10 to-indigo-500/10 border border-blue-500/20 text-xs font-semibold text-blue-700 dark:text-blue-300 shadow-xs mb-6">
             <Sparkles className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
-            <span>Outbox Desktop v2.4 Now Available</span>
+            <span>Outbox Downloader Desktop v2.4 Now Available</span>
           </div>
 
           {/* Main Title with Background Gradient Aura */}
@@ -46,7 +46,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDownload, onScrollToSimulator 
 
           {/* Subtitle */}
           <p className="mt-6 text-lg sm:text-xl text-slate-600 dark:text-slate-300 max-w-3xl leading-relaxed">
-            Stop downloading 100+ GB <code className="text-blue-700 bg-blue-100/70 border border-blue-200 dark:text-blue-300 dark:bg-blue-950/80 dark:border-blue-800/60 px-2 py-0.5 rounded text-sm font-mono">.zip</code> archives that fail halfway. Outbox lets you browse shared folders, pick only the files you need, and download them reliably with automatic resume and file verification.
+            Stop downloading 100+ GB <code className="text-blue-700 bg-blue-100/70 border border-blue-200 dark:text-blue-300 dark:bg-blue-950/80 dark:border-blue-800/60 px-2 py-0.5 rounded text-sm font-mono">.zip</code> archives that fail halfway. Outbox Downloader lets you browse shared folders, pick only the files you need, and download them reliably with automatic resume and file verification.
           </p>
 
           {/* Key Value Propositions Row */}
@@ -121,14 +121,14 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDownload, onScrollToSimulator 
               <span className="text-xs text-slate-500 dark:text-slate-400 mt-1">Verified File Integrity</span>
             </div>
 
-            <div className="flex flex-col items-center justify-center p-3 text-center border-l border-slate-200 dark:border-slate-800">
+            <div className="flex flex-col items-center justify-center p-3 text-center md:border-l border-t md:border-t-0 border-slate-200 dark:border-slate-800">
               <div className="flex items-center gap-1.5 text-sky-600 dark:text-sky-400 font-extrabold text-2xl sm:text-3xl font-mono">
                 3 <span className="text-base font-sans font-semibold text-slate-400">Steps</span>
               </div>
               <span className="text-xs text-slate-500 dark:text-slate-400 mt-1">Guided Link Workflow</span>
             </div>
 
-            <div className="flex flex-col items-center justify-center p-3 text-center border-l border-slate-200 dark:border-slate-800">
+            <div className="flex flex-col items-center justify-center p-3 text-center border-l md:border-l border-t md:border-t-0 border-slate-200 dark:border-slate-800">
               <div className="flex items-center gap-1.5 text-amber-600 dark:text-amber-400 font-extrabold text-2xl sm:text-3xl font-mono">
                 0 <span className="text-base font-sans font-semibold text-slate-400">Cap</span>
               </div>
