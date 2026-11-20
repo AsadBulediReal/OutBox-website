@@ -58,10 +58,12 @@ export const Navbar: React.FC<NavbarProps> = ({
               />
             </div>
           </div>
-          <div className="select-none pointer-events-none">
-            <span className="font-extrabold text-xl tracking-tight text-slate-900 dark:text-white flex items-center gap-1.5 select-none">
-              <span>Outbox</span>
-              <span className="text-blue-600 dark:text-blue-400 font-bold text-sm tracking-normal">Downloader</span>
+          <div className="flex flex-col select-none pointer-events-none">
+            <span className="font-extrabold text-lg sm:text-xl tracking-tight text-slate-900 dark:text-white leading-tight">
+              Outbox
+            </span>
+            <span className="text-blue-600 dark:text-blue-400 font-bold text-xs tracking-normal leading-tight">
+              Downloader
             </span>
           </div>
         </button>
