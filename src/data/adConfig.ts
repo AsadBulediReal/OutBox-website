@@ -59,7 +59,7 @@ export function getShowMockAdsSetting(): boolean {
       return saved === 'true';
     }
   }
-  return false; // Default: FALSE (do NOT show fake ads)
+  return import.meta.env.VITE_ENABLE_MOCK_ADS === 'true';
 }
 
 export function saveShowMockAdsSetting(enabled: boolean): void {
