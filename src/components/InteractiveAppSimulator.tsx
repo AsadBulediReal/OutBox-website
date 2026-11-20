@@ -27,8 +27,10 @@ import {
 } from 'lucide-react';
 import type { FileNode, PresetProject } from '../data/mockData';
 import { PRESET_PROJECTS } from '../data/mockData';
+import { useReleaseInfo } from '../context/ReleaseContext';
 
 export const InteractiveAppSimulator: React.FC = () => {
+  const release = useReleaseInfo();
   // Current active wizard step (0: Link, 1: Tree, 2: Transfers)
   const [activeStep, setActiveStep] = useState<number>(0);
   
@@ -902,7 +904,7 @@ export const InteractiveAppSimulator: React.FC = () => {
             </div>
 
             <div className="text-[11px] text-slate-500 text-center border-t border-slate-800 pt-3">
-              Outbox Downloader Core v2.4 (PySide6 / Python 3.11+)
+              Outbox Downloader Core v{release.version} (PySide6 / Python 3.11+)
             </div>
           </div>
         )}

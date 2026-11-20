@@ -1,8 +1,23 @@
 import React, { useState } from 'react';
 import { Download, Monitor, Apple } from 'lucide-react';
+import { useReleaseInfo } from '../context/ReleaseContext';
 
-export const QuickStartTabs: React.FC = () => {
+interface QuickStartTabsProps {
+  onOpenDownload?: (os?: 'win' | 'mac') => void;
+}
+
+export const QuickStartTabs: React.FC<QuickStartTabsProps> = ({ onOpenDownload }) => {
   const [activeTab, setActiveTab] = useState<'win' | 'mac'>('win');
+  const release = useReleaseInfo();
+
+  const handleDownloadClick = (os: 'win' | 'mac') => {
+    if (onOpenDownload) {
+      onOpenDownload(os);
+    } else {
+      const url = os === 'win' ? release.winDownloadUrl : release.macDownloadUrl;
+      window.location.href = url;
+    }
+  };
 
   return (
     <section id="quickstart" className="py-20 md:py-28 relative scroll-mt-20">
@@ -24,11 +39,10 @@ export const QuickStartTabs: React.FC = () => {
           <div className="inline-flex p-1.5 rounded-2xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-md dark:shadow-xl overflow-x-auto max-w-full">
             <button
               onClick={() => setActiveTab('win')}
-              className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition cursor-pointer flex items-center gap-2 whitespace-nowrap ${
-                activeTab === 'win'
+              className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition cursor-pointer flex items-center gap-2 whitespace-nowrap ${activeTab === 'win'
                   ? 'bg-blue-600 text-white shadow-md shadow-blue-600/30'
                   : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
-              }`}
+                }`}
             >
               <Monitor className="w-4 h-4" />
               <span>Windows (.exe)</span>
@@ -36,11 +50,10 @@ export const QuickStartTabs: React.FC = () => {
 
             <button
               onClick={() => setActiveTab('mac')}
-              className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition cursor-pointer flex items-center gap-2 whitespace-nowrap ${
-                activeTab === 'mac'
+              className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition cursor-pointer flex items-center gap-2 whitespace-nowrap ${activeTab === 'mac'
                   ? 'bg-blue-600 text-white shadow-md shadow-blue-600/30'
                   : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
-              }`}
+                }`}
             >
               <Apple className="w-4 h-4" />
               <span>macOS (.dmg)</span>
@@ -58,7 +71,7 @@ export const QuickStartTabs: React.FC = () => {
                   <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">Windows 10 and 11 (64-bit). No dependencies or runtimes needed.</p>
                 </div>
                 <span className="px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 text-xs font-mono font-semibold">
-                  v2.4 Ready
+                  v{release.version} Ready
                 </span>
               </div>
 
@@ -66,7 +79,7 @@ export const QuickStartTabs: React.FC = () => {
                 <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800">
                   <div className="text-xs text-slate-400 dark:text-slate-500 font-mono font-bold">STEP 1</div>
                   <h4 className="text-sm font-bold text-slate-900 dark:text-white mt-1">Download Installer</h4>
-                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">Directly obtain the signed <code className="text-blue-600 dark:text-blue-400">Outbox_Downloader_v2.4.0_Setup.exe</code> package.</p>
+                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">Directly obtain the signed <code className="text-blue-600 dark:text-blue-400 font-mono text-[11px] break-all">{release.winFileName}</code> package ({release.winSizeFormatted}).</p>
                 </div>
                 <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800">
                   <div className="text-xs text-slate-400 dark:text-slate-500 font-mono font-bold">STEP 2</div>
@@ -82,10 +95,11 @@ export const QuickStartTabs: React.FC = () => {
 
               <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
                 <div className="text-xs text-slate-600 dark:text-slate-400 font-medium">
-                  Outbox Downloader v2.4.0 · Windows 10/11 (64-bit) · ~42 MB
+                  Outbox Downloader v{release.version} · Windows 10/11 (64-bit) · {release.winSizeFormatted}
                 </div>
                 <button
-                  onClick={() => alert('Starting Windows Installer download (Outbox_Downloader_v2.4.0_Setup.exe)...')}
+                  type="button"
+                  onClick={() => handleDownloadClick('win')}
                   className="px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs shadow-md shadow-blue-600/30 transition whitespace-nowrap cursor-pointer flex items-center gap-1.5"
                 >
                   <Download className="w-3.5 h-3.5" />
@@ -103,7 +117,7 @@ export const QuickStartTabs: React.FC = () => {
                   <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">Universal binary for Apple Silicon (M1/M2/M3/M4) and Intel Macs.</p>
                 </div>
                 <span className="px-3 py-1 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20 text-xs font-mono font-semibold">
-                  macOS 12+
+                  v{release.version} · macOS 12+
                 </span>
               </div>
 
@@ -111,7 +125,7 @@ export const QuickStartTabs: React.FC = () => {
                 <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800">
                   <div className="text-xs text-slate-400 dark:text-slate-500 font-mono font-bold">STEP 1</div>
                   <h4 className="text-sm font-bold text-slate-900 dark:text-white mt-1">Download .dmg</h4>
-                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">Download the verified <code className="text-blue-600 dark:text-blue-400">Outbox_Downloader_v2.4.0_macOS.dmg</code> image (~48 MB).</p>
+                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">Download the verified <code className="text-blue-600 dark:text-blue-400 font-mono text-[11px] break-all">{release.macFileName}</code> image ({release.macSizeFormatted}).</p>
                 </div>
                 <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800">
                   <div className="text-xs text-slate-400 dark:text-slate-500 font-mono font-bold">STEP 2</div>
@@ -127,10 +141,11 @@ export const QuickStartTabs: React.FC = () => {
 
               <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
                 <div className="text-xs text-slate-600 dark:text-slate-400 font-medium">
-                  Outbox Downloader v2.4.0 · Apple Silicon & Intel · ~48 MB
+                  Outbox Downloader v{release.version} · Apple Silicon & Intel · {release.macSizeFormatted}
                 </div>
                 <button
-                  onClick={() => alert('Starting macOS Disk Image download (Outbox_Downloader_v2.4.0_macOS.dmg)...')}
+                  type="button"
+                  onClick={() => handleDownloadClick('mac')}
                   className="px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs shadow-md shadow-blue-600/30 transition whitespace-nowrap cursor-pointer flex items-center gap-1.5"
                 >
                   <Download className="w-3.5 h-3.5" />

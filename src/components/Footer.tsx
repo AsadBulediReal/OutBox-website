@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowUp, Monitor, Apple, Sparkles } from 'lucide-react';
+import { useReleaseInfo } from '../context/ReleaseContext';
 
 interface FooterProps {
   onOpenAutoAds?: () => void;
@@ -8,6 +9,7 @@ interface FooterProps {
 const CURRENT_YEAR = new Date().getFullYear();
 
 export const Footer: React.FC<FooterProps> = ({ onOpenAutoAds }) => {
+  const release = useReleaseInfo();
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -24,7 +26,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenAutoAds }) => {
               </div>
               <span className="text-xl font-extrabold text-slate-900 dark:text-white select-none">Outbox Downloader</span>
               <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20 select-none">
-                v2.4 Pro
+                v{release.version} Pro
               </span>
             </div>
             <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 max-w-sm leading-relaxed">

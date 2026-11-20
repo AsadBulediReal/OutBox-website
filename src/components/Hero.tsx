@@ -1,20 +1,22 @@
 import React from 'react';
-import { 
-  Download, 
-  Sparkles, 
-  ShieldCheck, 
-  RotateCcw, 
-  FolderTree, 
-  KeyRound, 
+import {
+  Download,
+  Sparkles,
+  ShieldCheck,
+  RotateCcw,
+  FolderTree,
+  KeyRound,
   Apple
 } from 'lucide-react';
+import { useReleaseInfo } from '../context/ReleaseContext';
 
 interface HeroProps {
-  onOpenDownload: () => void;
+  onOpenDownload: (os?: 'win' | 'mac') => void;
   onScrollToSimulator: () => void;
 }
 
 export const Hero: React.FC<HeroProps> = ({ onOpenDownload, onScrollToSimulator }) => {
+  const release = useReleaseInfo();
   return (
     <section className="relative overflow-hidden pt-12 pb-20 md:pt-20 md:pb-32">
       {/* Background Glow Orbs */}
@@ -26,7 +28,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDownload, onScrollToSimulator 
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-blue-500/10 via-sky-500/10 to-indigo-500/10 border border-blue-500/20 text-xs font-semibold text-blue-700 dark:text-blue-300 shadow-xs mb-6">
             <Sparkles className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
-            <span>Outbox Downloader Desktop v2.4 Now Available</span>
+            <span>Outbox Downloader Desktop v{release.version} Now Available</span>
           </div>
 
           {/* Main Title with Background Gradient Aura */}
@@ -72,7 +74,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDownload, onScrollToSimulator 
           {/* Primary Action Buttons */}
           <div className="mt-10 flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
             <button
-              onClick={onOpenDownload}
+              onClick={() => onOpenDownload('win')}
               className="w-full sm:w-auto flex items-center justify-center gap-3 px-7 py-4 rounded-2xl text-base font-bold text-white bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 shadow-xl shadow-blue-500/25 transition-all transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
             >
               <Download className="w-5 h-5" />
@@ -80,7 +82,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDownload, onScrollToSimulator 
             </button>
 
             <button
-              onClick={onOpenDownload}
+              onClick={() => onOpenDownload('mac')}
               className="w-full sm:w-auto flex items-center justify-center gap-2.5 px-6 py-4 rounded-2xl text-base font-semibold text-slate-800 dark:text-slate-200 bg-white dark:bg-slate-900/90 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-700/80 shadow-md hover:border-blue-400 transition-all cursor-pointer"
             >
               <Apple className="w-5 h-5 text-slate-800 dark:text-slate-200" />

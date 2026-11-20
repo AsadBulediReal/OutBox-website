@@ -9,6 +9,9 @@
   "macGithubUrl": "https://github.com/AsadBulediReal/outbox-releases/releases/download/v1.0.5/Outbox_Downloader_macOS_v1.0.5.dmg",
   "winCloudinaryUrl": "",
   "macCloudinaryUrl": "",
+  "winSizeFormatted": "~37 MB",
+  "macSizeFormatted": "~40 MB",
   "publishedAt": "2026-11-20",
-  "releaseDate": "2026-11-20"
+  "releaseDate": "2026-11-20",
+  "releaseUrl": "https://github.com/AsadBulediReal/outbox-releases/releases/tag/v1.0.5"
 }

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { MegaphoneOff } from 'lucide-react';
 import {
   AD_SETTINGS,
   SPONSOR_ADS_POOL,
@@ -72,25 +71,6 @@ export const ModalSponsorAd: React.FC = () => {
     );
   }
 
-  // NO ADS STATE
-  return (
-    <div className="p-3 rounded-2xl bg-slate-50/70 dark:bg-slate-800/40 border border-dashed border-slate-200 dark:border-slate-800 text-left flex items-center justify-between gap-3">
-      <div className="flex items-center gap-2.5">
-        <div className="w-7 h-7 rounded-lg bg-slate-200/60 dark:bg-slate-800 text-slate-400 flex items-center justify-center shrink-0">
-          <MegaphoneOff className="w-3.5 h-3.5" />
-        </div>
-        <div>
-          <span className="text-[11px] font-bold text-slate-600 dark:text-slate-400 block">
-            No Sponsored Offers Available
-          </span>
-          <span className="text-[10px] text-slate-400 block">
-            No companion tools or third-party ads to display.
-          </span>
-        </div>
-      </div>
-      <span className="text-[9px] font-mono uppercase px-2 py-0.5 rounded bg-slate-200/50 dark:bg-slate-800 text-slate-400">
-        Vacant
-      </span>
-    </div>
-  );
+  // NO ADS STATE - Hide completely so modal stays clean & professional
+  return null;
 };
