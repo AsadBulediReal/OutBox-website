@@ -17,9 +17,12 @@ function injectGoogleAutoAdsScript(clientId: string): void {
   const cleanId = clientId.trim();
   if (!cleanId) return;
 
-  // Check if script is already present
+  // Check if script is already present with the same client ID
   const existingScript = document.querySelector(`script[src*="googlesyndication.com"]`);
   if (existingScript) {
+    if (existingScript.getAttribute('src')?.includes(cleanId)) {
+      return; // Already injected and matches
+    }
     existingScript.remove();
   }
 

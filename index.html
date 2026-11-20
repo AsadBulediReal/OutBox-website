@@ -15,9 +15,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     
-    <!-- Google Auto Ads Preloader (Automatically activates if publisher ID is saved) -->
+    <!-- Google Auto Ads Preloader (Activates if publisher ID is saved in localStorage and script is not already injected) -->
     <script>
       (function() {
+        if (document.querySelector('script[src*="googlesyndication.com"]')) return;
         var pubId = localStorage.getItem('outbox_adsense_client_id');
         if (pubId && pubId.trim().startsWith('ca-pub-')) {
           var s = document.createElement('script');
