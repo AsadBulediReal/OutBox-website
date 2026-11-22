@@ -78,8 +78,8 @@ export const AD_SETTINGS: AdSettings = {
   enableModalSponsor: true,
 
   // Google Auto Ads is ready. Paste your pub ID here or via the Auto Ads button in the footer:
-  useGoogleAutoAds: false,
-  googleAdSenseClientId: '',
+  useGoogleAutoAds: true,
+  googleAdSenseClientId: 'ca-pub-1722794534248442',
 };
 
 // Optional sample ads (only rendered if user explicitly enables preview mode)
