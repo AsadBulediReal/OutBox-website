@@ -6,10 +6,12 @@ import { ProblemSolution } from './components/ProblemSolution';
 import { FeatureGrid } from './components/FeatureGrid';
 import { HowItWorks } from './components/HowItWorks';
 import { ComparisonTable } from './components/ComparisonTable';
-import { ArchitectureSection } from './components/ArchitectureSection';
 import { QuickStartTabs } from './components/QuickStartTabs';
 import { UseCasesSection } from './components/UseCasesSection';
 import { FaqSection } from './components/FaqSection';
+import { AboutSection } from './components/AboutSection';
+import { ContactSection } from './components/ContactSection';
+import { LegalModal } from './components/LegalModal';
 import { DownloadModal } from './components/DownloadModal';
 import { Footer } from './components/Footer';
 import { SideRailAds } from './components/ads/SideRailAds';
@@ -17,7 +19,6 @@ import { LeaderboardAd } from './components/ads/LeaderboardAd';
 import { FloatingBottomAd } from './components/ads/FloatingBottomAd';
 import { AutoAdsManager } from './components/ads/AutoAdsManager';
 import { ReleaseProvider } from './context/ReleaseContext';
-import { Download, Apple } from 'lucide-react';
 
 export function App() {
   // Light mode is default as requested
@@ -25,6 +26,7 @@ export function App() {
   const [isDownloadOpen, setIsDownloadOpen] = useState<boolean>(false);
   const [downloadOs, setDownloadOs] = useState<'win' | 'mac' | undefined>(undefined);
   const [isAutoAdsOpen, setIsAutoAdsOpen] = useState<boolean>(false);
+  const [legalModalTab, setLegalModalTab] = useState<'privacy' | 'terms' | null>(null);
 
   const handleOpenDownload = (os?: 'win' | 'mac') => {
     setDownloadOs(os);
@@ -101,9 +103,6 @@ export function App() {
           {/* Head-to-Head Comparison Matrix */}
           <ComparisonTable />
 
-          {/* Architecture & Code Quality Section */}
-          <ArchitectureSection />
-
           {/* Real-World Use Cases */}
           <UseCasesSection />
 
@@ -113,45 +112,28 @@ export function App() {
           {/* Second In-Between Leaderboard Ad */}
           <LeaderboardAd defaultIndex={3} onOpenAutoAds={() => setIsAutoAdsOpen(true)} />
 
+          {/* About Us & Engineering Mission (Crucial for AdSense EEAT) */}
+          <AboutSection />
+
           {/* Frequently Asked Questions */}
           <FaqSection />
 
-          {/* Final CTA Banner */}
-          <section className="py-20 relative overflow-hidden">
-            <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-              <div className="relative rounded-3xl p-10 sm:p-14 bg-gradient-to-b from-blue-50 to-indigo-50/50 dark:from-blue-900/40 dark:to-slate-900/90 border border-blue-200 dark:border-blue-500/30 shadow-2xl backdrop-blur-xl">
-                <div className="w-16 h-16 rounded-2xl bg-blue-600 mx-auto flex items-center justify-center p-3 shadow-xl shadow-blue-500/40 mb-6 select-none">
-                  <img src="/outbox_icon.svg" alt="Outbox" className="w-full h-full object-contain filter drop-shadow select-none pointer-events-none" draggable={false} />
-                </div>
-                <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-                  Stop Wrestling with 100 GB ZIP Files.
-                </h2>
-                <p className="mt-4 text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed">
-                  Download Outbox Downloader today. Selective, resumable, and cryptographically verified downloads from any Dropbox shared link. Official domain: outboxdownloader.com.
-                </p>
-                <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-                  <button
-                    onClick={() => handleOpenDownload('win')}
-                    className="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-4 rounded-2xl text-base font-bold text-white bg-blue-600 hover:bg-blue-500 shadow-xl shadow-blue-600/30 transition transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
-                  >
-                    <Download className="w-5 h-5" />
-                    <span>Download for Windows (.exe)</span>
-                  </button>
-                  <button
-                    onClick={() => handleOpenDownload('mac')}
-                    className="w-full sm:w-auto flex items-center justify-center gap-2 px-7 py-4 rounded-2xl text-base font-semibold text-slate-800 dark:text-slate-200 bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-700/80 shadow-md transition"
-                  >
-                    <Apple className="w-5 h-5 text-slate-800 dark:text-slate-200" />
-                    <span>Download for Mac (.dmg)</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </section>
+          {/* Contact Support & Engineering Form (Crucial for AdSense Trust) */}
+          <ContactSection />
         </main>
 
         {/* Footer */}
-        <Footer onOpenAutoAds={() => setIsAutoAdsOpen(true)} />
+        <Footer 
+          onOpenAutoAds={() => setIsAutoAdsOpen(true)}
+          onOpenLegal={(tab) => setLegalModalTab(tab)}
+        />
+
+        {/* Legal & Compliance Modal (Privacy Policy & Terms) */}
+        <LegalModal
+          isOpen={legalModalTab !== null}
+          initialTab={legalModalTab || 'privacy'}
+          onClose={() => setLegalModalTab(null)}
+        />
 
         {/* Download Modal */}
         <DownloadModal

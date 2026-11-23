@@ -4,11 +4,12 @@ import { useReleaseInfo } from '../context/ReleaseContext';
 
 interface FooterProps {
   onOpenAutoAds?: () => void;
+  onOpenLegal?: (tab: 'privacy' | 'terms') => void;
 }
 
 const CURRENT_YEAR = new Date().getFullYear();
 
-export const Footer: React.FC<FooterProps> = ({ onOpenAutoAds }) => {
+export const Footer: React.FC<FooterProps> = ({ onOpenAutoAds, onOpenLegal }) => {
   const release = useReleaseInfo();
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -52,35 +53,45 @@ export const Footer: React.FC<FooterProps> = ({ onOpenAutoAds }) => {
               <li><a href="#features" className="hover:text-blue-600 dark:hover:text-blue-400 transition">Features</a></li>
               <li><a href="#how-it-works" className="hover:text-blue-600 dark:hover:text-blue-400 transition">How It Works</a></li>
               <li><a href="#comparison" className="hover:text-blue-600 dark:hover:text-blue-400 transition">Comparison Matrix</a></li>
-              <li><a href="#architecture" className="hover:text-blue-600 dark:hover:text-blue-400 transition">Tech Specs & Architecture</a></li>
-              <li><a href="#quickstart" className="hover:text-blue-600 dark:hover:text-blue-400 transition">Setup & Installation</a></li>
+              <li><a href="#about" className="hover:text-blue-600 dark:hover:text-blue-400 font-medium text-slate-700 dark:text-slate-300 transition">About Us & Mission</a></li>
               <li><a href="#faq" className="hover:text-blue-600 dark:hover:text-blue-400 transition">FAQ</a></li>
+              <li><a href="#contact" className="hover:text-blue-600 dark:hover:text-blue-400 font-medium text-slate-700 dark:text-slate-300 transition">Contact & Support</a></li>
             </ul>
           </div>
 
-          {/* Security & Tech */}
+          {/* Legal & Policy */}
           <div className="space-y-3">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-slate-200">Engineering</h4>
+            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-slate-200">Legal & Transparency</h4>
             <ul className="space-y-2 text-xs">
-              <li className="flex items-center gap-1.5 text-slate-600 dark:text-slate-400">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 dark:bg-emerald-400" />
-                PySide6 Native Desktop App
+              {onOpenLegal && (
+                <>
+                  <li>
+                    <button
+                      onClick={() => onOpenLegal('privacy')}
+                      className="hover:text-blue-600 dark:hover:text-blue-400 transition text-left cursor-pointer"
+                    >
+                      Privacy Policy
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      onClick={() => onOpenLegal('terms')}
+                      className="hover:text-blue-600 dark:hover:text-blue-400 transition text-left cursor-pointer"
+                    >
+                      Terms of Service
+                    </button>
+                  </li>
+                </>
+              )}
+              <li>
+                <a href="#about" className="hover:text-blue-600 dark:hover:text-blue-400 transition">
+                  About Our Project
+                </a>
               </li>
-              <li className="flex items-center gap-1.5 text-slate-600 dark:text-slate-400">
-                <span className="w-1.5 h-1.5 rounded-full bg-blue-500 dark:bg-blue-400" />
-                Bit-for-Bit File Integrity
-              </li>
-              <li className="flex items-center gap-1.5 text-slate-600 dark:text-slate-400">
-                <span className="w-1.5 h-1.5 rounded-full bg-sky-500 dark:bg-sky-400" />
-                Automatic Resume on Network Drop
-              </li>
-              <li className="flex items-center gap-1.5 text-slate-600 dark:text-slate-400">
-                <span className="w-1.5 h-1.5 rounded-full bg-amber-500 dark:bg-amber-400" />
-                Secure Direct Browser Sign-In
-              </li>
-              <li className="flex items-center gap-1.5 text-slate-600 dark:text-slate-400">
-                <span className="w-1.5 h-1.5 rounded-full bg-purple-500 dark:bg-purple-400" />
-                Zero Third-Party Servers
+              <li>
+                <a href="#contact" className="hover:text-blue-600 dark:hover:text-blue-400 transition">
+                  Contact & Support
+                </a>
               </li>
             </ul>
           </div>
@@ -88,16 +99,37 @@ export const Footer: React.FC<FooterProps> = ({ onOpenAutoAds }) => {
 
         {/* Bottom Disclaimer & Copyright */}
         <div className="pt-8 border-t border-slate-200 dark:border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center gap-3">
             <span>© {CURRENT_YEAR} Outbox Downloader (outboxdownloader.com). All rights reserved.</span>
+            {onOpenLegal && (
+              <>
+                <span>•</span>
+                <button
+                  onClick={() => onOpenLegal('privacy')}
+                  className="hover:text-blue-600 dark:hover:text-blue-400 underline cursor-pointer"
+                >
+                  Privacy
+                </button>
+                <span>•</span>
+                <button
+                  onClick={() => onOpenLegal('terms')}
+                  className="hover:text-blue-600 dark:hover:text-blue-400 underline cursor-pointer"
+                >
+                  Terms
+                </button>
+              </>
+            )}
             {onOpenAutoAds && (
-              <button
-                onClick={onOpenAutoAds}
-                className="inline-flex items-center gap-1 text-[11px] font-semibold text-blue-600 dark:text-blue-400 hover:underline cursor-pointer"
-              >
-                <Sparkles className="w-3 h-3" />
-                <span>Auto Ads Setup</span>
-              </button>
+              <>
+                <span>•</span>
+                <button
+                  onClick={onOpenAutoAds}
+                  className="inline-flex items-center gap-1 text-[11px] font-semibold text-blue-600 dark:text-blue-400 hover:underline cursor-pointer"
+                >
+                  <Sparkles className="w-3 h-3" />
+                  <span>Auto Ads</span>
+                </button>
+              </>
             )}
           </div>
           
