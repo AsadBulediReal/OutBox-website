@@ -6,27 +6,41 @@ export const ComparisonTable: React.FC = () => {
   const renderCell = (val: boolean | string) => {
     if (typeof val === 'boolean') {
       return val ? (
-        <div className="flex items-center justify-center">
+        <div className="flex items-center justify-center" title="Fully Supported">
           <div className="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center border border-emerald-500/30 shadow-xs">
             <Check className="w-3.5 h-3.5 stroke-[2.5]" />
           </div>
         </div>
       ) : (
-        <div className="flex items-center justify-center">
+        <div className="flex items-center justify-center" title="Not Supported">
           <div className="w-6 h-6 rounded-full bg-rose-500/20 text-rose-400 flex items-center justify-center border border-rose-500/30 shadow-xs">
             <X className="w-3.5 h-3.5 stroke-[2.5]" />
           </div>
         </div>
       );
     }
+
+    const cleanText = typeof val === 'string' ? val.replace(/^\(|\)$/g, '') : '';
+
     return (
-      <div className="flex items-center justify-center gap-1.5 text-xs">
-        <div className="w-5 h-5 shrink-0 rounded-full bg-rose-500/20 text-rose-500 dark:text-rose-400 flex items-center justify-center border border-rose-500/30">
-          <X className="w-3 h-3 stroke-[2.5]" />
+      <div className="flex items-center justify-center">
+        <div 
+          className="relative inline-flex items-center justify-center group/tip cursor-help"
+          title={cleanText}
+        >
+          <div className="w-6 h-6 rounded-full bg-rose-500/20 text-rose-500 dark:text-rose-400 flex items-center justify-center border border-rose-500/30 shadow-xs transition-transform duration-150 group-hover/tip:scale-110">
+            <X className="w-3.5 h-3.5 stroke-[2.5]" />
+          </div>
+
+          {/* Floating Hover Tooltip */}
+          <div className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden group-hover/tip:flex flex-col items-center z-30 transition-all duration-150">
+            <div className="px-2.5 py-1 text-[11px] font-semibold text-white bg-slate-900/95 dark:bg-slate-800/95 border border-slate-700/80 rounded-lg shadow-xl whitespace-nowrap backdrop-blur-sm">
+              {cleanText}
+            </div>
+            {/* Tooltip caret */}
+            <div className="w-2 h-2 -mt-1 rotate-45 bg-slate-900/95 dark:bg-slate-800/95 border-r border-b border-slate-700/80" />
+          </div>
         </div>
-        <span className="text-[11px] font-medium leading-tight text-rose-600/90 dark:text-rose-400/90 whitespace-nowrap">
-          {val}
-        </span>
       </div>
     );
   };
