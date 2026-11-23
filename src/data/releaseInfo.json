@@ -1,10 +1,10 @@
 {
-  "version": "1.1.2",
-  "tag": "v1.1.2",
-  "winFileName": "Outbox_Downloader_Windows_Setup_v1.1.2.exe",
-  "macFileName": "Outbox_Downloader_macOS_v1.1.2.dmg",
-  "winDownloadUrl": "https://outboxdownloader.com/downloads/Outbox_Downloader_Windows_Setup_v1.1.2.exe",
-  "macDownloadUrl": "https://outboxdownloader.com/downloads/Outbox_Downloader_macOS_v1.1.2.dmg",
+  "version": "1.1.3",
+  "tag": "v1.1.3",
+  "winFileName": "Outbox_Downloader_Windows_Setup_v1.1.3.exe",
+  "macFileName": "Outbox_Downloader_macOS_v1.1.3.dmg",
+  "winDownloadUrl": "https://outboxdownloader.com/downloads/Outbox_Downloader_Windows_Setup_v1.1.3.exe",
+  "macDownloadUrl": "https://outboxdownloader.com/downloads/Outbox_Downloader_macOS_v1.1.3.dmg",
   "publishedAt": "2026-11-23",
   "releaseDate": "2026-11-23"
 }
