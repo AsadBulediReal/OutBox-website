@@ -27,3 +27,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Release installers and remote ad configuration
+downloads/
+ads.json
+
