@@ -37,26 +37,26 @@ export const AboutSection: React.FC = () => {
             <div className="lg:col-span-7 space-y-4">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-blue-50 dark:bg-blue-950/50 text-blue-700 dark:text-blue-300 text-xs font-semibold">
                 <HeartHandshake className="w-4 h-4" />
-                The Origin Story
+                Our Mission & Principles
               </div>
               <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">
-                Why We Built Outbox Downloader
+                Reliable Transfers Engineered for Modern Data
               </h3>
               <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
-                If you have ever received a Dropbox shared link containing a 100 GB video project, 3D asset library, or photo shoot, you know the frustration: clicking &ldquo;Download&rdquo; forces the browser to compress everything into a giant multi-gigabyte ZIP file that routinely fails at 98%, cannot be resumed, and refuses to let you cherry-pick only the files you actually need.
+                Cloud datasets and production assets have outgrown standard web browsers. Outbox Downloader was built to bridge this gap: providing an independent, highly resilient desktop utility designed specifically for handling large-scale shared folders with total predictability.
               </p>
               <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
-                We developed Outbox Downloader as a dedicated desktop solution. By querying the folder tree directly, users can inspect every subfolder and cherry-pick specific files, download multi-gigabyte streams with byte-range resume capability, and verify every block with SHA-256 cryptographic hashes.
+                Our philosophy centers on user control and transparency: zero telemetry collection, zero intermediate servers, and open architectural standards that run purely on your local machine.
               </p>
               <div className="pt-2 flex flex-wrap gap-4 text-xs font-medium text-slate-600 dark:text-slate-400">
                 <span className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-500" /> Selective file extraction
+                  <CheckCircle2 className="w-4 h-4 text-emerald-500" /> 100% Client-Side TLS
                 </span>
                 <span className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-500" /> HTTP Range resume
+                  <CheckCircle2 className="w-4 h-4 text-emerald-500" /> Zero Telemetry Tracking
                 </span>
                 <span className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-500" /> No zip corruption
+                  <CheckCircle2 className="w-4 h-4 text-emerald-500" /> Open Engineering Standards
                 </span>
               </div>
             </div>

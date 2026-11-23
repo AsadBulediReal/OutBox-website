@@ -2,12 +2,10 @@ import { useState, useEffect } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { InteractiveAppSimulator } from './components/InteractiveAppSimulator';
-import { ProblemSolution } from './components/ProblemSolution';
 import { FeatureGrid } from './components/FeatureGrid';
 import { HowItWorks } from './components/HowItWorks';
 import { ComparisonTable } from './components/ComparisonTable';
 import { QuickStartTabs } from './components/QuickStartTabs';
-import { UseCasesSection } from './components/UseCasesSection';
 import { FaqSection } from './components/FaqSection';
 import { AboutSection } from './components/AboutSection';
 import { ContactSection } from './components/ContactSection';
@@ -91,9 +89,6 @@ export function App() {
           {/* In-Between Leaderboard Ad */}
           <LeaderboardAd onOpenAutoAds={() => setIsAutoAdsOpen(true)} />
 
-          {/* Problem vs Solution Section */}
-          <ProblemSolution />
-
           {/* Core Feature Deep-Dive Grid */}
           <FeatureGrid />
 
@@ -102,9 +97,6 @@ export function App() {
 
           {/* Head-to-Head Comparison Matrix */}
           <ComparisonTable />
-
-          {/* Real-World Use Cases */}
-          <UseCasesSection />
 
           {/* Setup & Quick-Start Tabs */}
           <QuickStartTabs />

@@ -371,59 +371,45 @@ export interface FeatureItem {
 export const FEATURES: FeatureItem[] = [
   {
     icon: 'FolderTree',
-    title: 'Selective Downloads',
-    subtitle: 'Only download what you want',
-    description: 'Browse the complete folder tree and pick the specific files or folders you need. Avoid downloading massive 100+ GB archives when you only need a few files.',
-    highlight: 'No giant ZIP archives',
+    title: 'Selective File Explorer',
+    subtitle: 'Selective Tree Download',
+    description: 'Browse remote directory trees and pick individual files or subfolders with accurate byte counters before initiating transfers.',
+    highlight: 'Zero wasted disk space',
   },
   {
     icon: 'RotateCcw',
-    title: 'Pause & Resume Transfers',
-    subtitle: 'Never lose your progress',
-    description: 'If your Wi-Fi drops or your computer goes to sleep, transfers pick up right from where they stopped. Never restart a download from scratch.',
-    highlight: 'Seamless instant resume',
+    title: 'Byte-Range Resume',
+    subtitle: 'Interruption Proof',
+    description: 'Picks up paused or broken downloads at exact byte boundaries if your Wi-Fi flickers or your computer goes to sleep.',
+    highlight: 'No lost progress',
   },
   {
     icon: 'ShieldCheck',
-    title: 'Automatic File Repair',
-    subtitle: 'Guaranteed intact downloads',
-    description: 'Outbox automatically checks every downloaded file. If a file is incomplete or damaged during transfer, it is instantly self-healed and re-downloaded.',
-    highlight: '100% accurate files',
-  },
-  {
-    icon: 'KeyRound',
-    title: '1-Click Secure Sign-In',
-    subtitle: 'Fast browser-based login',
-    description: 'Sign in directly through your web browser with any Dropbox account. No complicated tokens, passwords, or setup required.',
-    highlight: 'Instant, safe sign-in',
-  },
-  {
-    icon: 'Lock',
-    title: 'Smart Password Detection',
-    subtitle: 'Prompts automatically',
-    description: 'Open password-protected Dropbox links without hassle. Outbox automatically detects protected shares and prompts you cleanly for the password.',
-    highlight: 'Unlocks password shares',
-  },
-  {
-    icon: 'CheckCircle2',
-    title: 'Smart Skip for Existing Files',
-    subtitle: 'Skip already downloaded files',
-    description: 'Already have part of the project on your drive? Outbox checks your existing files in seconds and only downloads what is new or updated.',
-    highlight: 'No duplicate downloads',
-  },
-  {
-    icon: 'FolderSync',
-    title: 'Clean Folder Organization',
-    subtitle: 'No accidental double folders',
-    description: 'Intelligently prevents annoying duplicate nesting like Photos/Photos. Files land cleanly into your chosen destination folder.',
-    highlight: 'Clean folder layout',
+    title: 'Cryptographic Self-Healing',
+    subtitle: 'Block-Level SHA-256',
+    description: 'Computes parallel 4MB chunk hashes against cloud checksums, detecting and re-downloading only damaged blocks.',
+    highlight: 'Bit-perfect accuracy',
   },
   {
     icon: 'SearchCheck',
-    title: 'Verify Existing Files',
-    subtitle: 'Audit your drive anytime',
-    description: 'Want to confirm files on your drive or SSD match the cloud master? Click "Verify Files" anytime without re-downloading anything.',
-    highlight: 'Fast offline check',
+    title: 'Local Audit & Delta Skip',
+    subtitle: 'Smart Drive Checking',
+    description: 'Detects existing project files on your SSD, validates hashes, and downloads only new or altered files.',
+    highlight: 'Fast offline verification',
+  },
+  {
+    icon: 'FolderSync',
+    title: 'Zero Account Quota',
+    subtitle: 'Direct TLS Streaming',
+    description: 'Streams directly from the shared link to your disk without copying files into your personal Dropbox account or consuming storage.',
+    highlight: '0 MB quota consumed',
+  },
+  {
+    icon: 'KeyRound',
+    title: 'Browser OAuth & Password Unlock',
+    subtitle: 'Frictionless Access',
+    description: 'Direct browser-based authorization with automatic password detection for password-protected shared folders.',
+    highlight: 'Secure 1-click login',
   },
 ];
 
@@ -488,35 +474,23 @@ export const COMPARISONS = [
 
 export const FAQS = [
   {
-    q: 'Why do large Dropbox shared folder downloads fail in normal web browsers?',
-    a: 'When you click "Download" on a large Dropbox shared folder in your browser, Dropbox attempts to compress all files into a temporary single .zip archive on their servers. Dropbox strictly caps server-side zip generation at 20 GB or 10,000 files. Even under that limit, any minor network blip terminates the entire multi-gigabyte zip download without any way to resume, wasting all downloaded data. Outbox completely bypasses zip bundling by streaming individual files directly over HTTP with byte-range resume.'
+    q: 'Do I need a paid Dropbox subscription or cloud storage quota?',
+    a: 'No. Outbox works with any Dropbox account (including free Basic) and requires zero storage quota in your own Dropbox account. Files stream directly from the shared link to your local drive without taking up space in your personal cloud.'
   },
   {
-    q: 'Do I need a paid Dropbox subscription to use Outbox?',
-    a: 'No! Outbox works with any Dropbox account—Free Basic, Plus, Professional, or Business/Enterprise. In fact, Outbox streams shared links without adding the files to your personal Dropbox cloud quota, so you never have to worry about running out of Dropbox storage space.'
+    q: 'How does the automatic pause and resume mechanism work?',
+    a: 'When downloading, Outbox writes incoming data to temporary files while tracking exact byte offsets. If your network blips, your computer sleeps, or you pause the transfer, Outbox sends standard HTTP Range requests from the last verified byte, avoiding wasted bandwidth.'
   },
   {
-    q: 'How does Outbox guarantee 100% file integrity?',
-    a: 'Outbox implements Dropbox\'s official SHA-256 block-chunked hash algorithm (content_hash). As each file is downloaded or audited, it computes 4MB block hashes in parallel. If even a single byte differs or an unexpected connection drop truncated a file, Outbox automatically detects the mismatch, isolates the file, and re-downloads a pristine copy.'
+    q: 'How does cryptographic verification guarantee intact downloads?',
+    a: 'Outbox computes SHA-256 hashes on 4MB data blocks in real time and validates them against Dropbox\'s content_hash specification. If any block fails or is truncated, Outbox re-downloads only that block. You can also run "Verify Files" anytime to audit existing files on your drive.'
   },
   {
-    q: 'How does Outbox handle password-protected Dropbox links?',
-    a: 'When you paste a password-protected shared link, Outbox automatically detects the authorization challenge from Dropbox and prompts you with a secure password popup. Once entered, Outbox exchanges the authenticated session and renders the full directory tree instantly.'
+    q: 'Are my files, tokens, or links sent through any third-party servers?',
+    a: 'No. Outbox connects directly from your local machine to Dropbox\'s official APIs over encrypted HTTPS. There are zero proxy servers, intermediate databases, or telemetry trackers. Your credentials and files never leave your computer.'
   },
   {
-    q: 'Can I resume downloads if my connection drops or I pause?',
-    a: 'Yes. Outbox saves incomplete files as .tmp files on your local drive and records transfer offsets. When resuming, it sends an HTTP Range header with an engineered 4 KB safety rewind buffer to guarantee that no overlapping bytes are skipped or duplicated.'
-  },
-  {
-    q: 'Are my Dropbox credentials or downloaded files sent to any remote servers?',
-    a: 'Absolutely not. Outbox is 100% free and open-source desktop software. It runs entirely on your local machine and connects directly to Dropbox\'s official API (api.dropboxapi.com). Your OAuth tokens and downloaded files never leave your computer.'
-  },
-  {
-    q: 'Can I verify files that were already downloaded previously without redownloading them?',
-    a: 'Yes! Outbox features a dedicated "Verify Files" engine. You can select any target folder on your local machine and click Verify: Outbox will scan every local file, calculate its SHA-256 content hash, and cross-reference it against the remote Dropbox metadata without downloading anything that already passes.'
-  },
-  {
-    q: 'What platforms are supported?',
-    a: 'Outbox is built with Python 3.11+ and PySide6 (Qt for Python). It is packaged as a standalone Windows executable (.exe) for Windows 10 and 11, and can also be run natively from source on macOS and Linux via Python.'
+    q: 'Which platforms and link formats are supported?',
+    a: 'Outbox is available as a standalone executable for Windows 10/11, a native app for macOS, and can be run from source on Linux. It supports standard shared links (/scl/fo/..., /sh/...), team folders, and password-protected folders.'
   }
 ];
