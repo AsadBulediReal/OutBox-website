@@ -7,19 +7,28 @@ export const ComparisonTable: React.FC = () => {
     if (typeof val === 'boolean') {
       return val ? (
         <div className="flex items-center justify-center">
-          <div className="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center border border-emerald-500/30">
-            <Check className="w-3.5 h-3.5" />
+          <div className="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center border border-emerald-500/30 shadow-xs">
+            <Check className="w-3.5 h-3.5 stroke-[2.5]" />
           </div>
         </div>
       ) : (
         <div className="flex items-center justify-center">
-          <div className="w-6 h-6 rounded-full bg-rose-500/20 text-rose-400 flex items-center justify-center border border-rose-500/30">
-            <X className="w-3.5 h-3.5" />
+          <div className="w-6 h-6 rounded-full bg-rose-500/20 text-rose-400 flex items-center justify-center border border-rose-500/30 shadow-xs">
+            <X className="w-3.5 h-3.5 stroke-[2.5]" />
           </div>
         </div>
       );
     }
-    return <span className="text-xs text-slate-400 leading-tight">{val}</span>;
+    return (
+      <div className="flex items-center justify-center gap-1.5 text-xs">
+        <div className="w-5 h-5 shrink-0 rounded-full bg-rose-500/20 text-rose-500 dark:text-rose-400 flex items-center justify-center border border-rose-500/30">
+          <X className="w-3 h-3 stroke-[2.5]" />
+        </div>
+        <span className="text-[11px] font-medium leading-tight text-rose-600/90 dark:text-rose-400/90 whitespace-nowrap">
+          {val}
+        </span>
+      </div>
+    );
   };
 
   return (
@@ -66,8 +75,8 @@ export const ComparisonTable: React.FC = () => {
                   </th>
                   <th className="py-5 px-6 text-sm font-bold text-slate-700 dark:text-slate-300 text-center w-1/6">
                     <div className="flex flex-col items-center">
-                      <span>rclone / wget</span>
-                      <span className="text-[10px] text-slate-400 dark:text-slate-500">CLI Scripts</span>
+                      <span>rclone / CLI</span>
+                      <span className="text-[10px] text-slate-400 dark:text-slate-500">Terminal Script</span>
                     </div>
                   </th>
                 </tr>
