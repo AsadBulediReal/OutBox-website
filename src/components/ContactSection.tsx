@@ -33,12 +33,20 @@ export const ContactSection: React.FC = () => {
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState<string>('');
   const [copiedEmail, setCopiedEmail] = useState<boolean>(false);
+  const [copiedTicket, setCopiedTicket] = useState<boolean>(false);
   const [ticketId, setTicketId] = useState<string>('');
 
   const handleCopyEmail = (emailStr: string) => {
     navigator.clipboard.writeText(emailStr);
     setCopiedEmail(true);
     setTimeout(() => setCopiedEmail(false), 2500);
+  };
+
+  const handleCopyTicket = (ticket: string) => {
+    if (!ticket) return;
+    navigator.clipboard.writeText(ticket);
+    setCopiedTicket(true);
+    setTimeout(() => setCopiedTicket(false), 2500);
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -156,6 +164,7 @@ export const ContactSection: React.FC = () => {
     });
     setStatus('idle');
     setErrorMessage('');
+    setCopiedTicket(false);
   };
 
   return (
@@ -268,9 +277,22 @@ export const ContactSection: React.FC = () => {
                     </h3>
                     <p className="mt-2 text-sm text-slate-600 dark:text-slate-300 max-w-md mx-auto">
                       Thank you for contacting Outbox Downloader. Your ticket reference is{' '}
-                      <span className="font-mono font-bold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/60 px-2 py-0.5 rounded border border-blue-500/20">
-                        {ticketId}
-                      </span>
+                      <button
+                        type="button"
+                        onClick={() => handleCopyTicket(ticketId)}
+                        title="Click to copy ticket reference"
+                        className="inline-flex items-center gap-1 font-mono font-bold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/60 hover:bg-blue-100 dark:hover:bg-blue-900/60 px-2 py-0.5 rounded border border-blue-500/30 transition cursor-pointer group"
+                      >
+                        <span>{ticketId}</span>
+                        {copiedTicket ? (
+                          <span className="inline-flex items-center gap-0.5 text-xs text-emerald-600 dark:text-emerald-400 font-sans font-medium">
+                            <Check className="w-3.5 h-3.5" />
+                            Copied!
+                          </span>
+                        ) : (
+                          <Copy className="w-3.5 h-3.5 text-blue-500/70 group-hover:text-blue-600 dark:text-blue-400 transition" />
+                        )}
+                      </button>
                       . A member of our support team will get back to you at{' '}
                       <span className="font-semibold text-slate-900 dark:text-white">{formData.email}</span>.
                     </p>
@@ -305,15 +327,6 @@ export const ContactSection: React.FC = () => {
                       <Mail className="w-3.5 h-3.5 text-blue-500" />
                       <span>Default Mail App</span>
                     </a>
-
-                    {/* Direct copy fallback */}
-                    <button
-                      onClick={() => handleCopyEmail('contact@outboxdownloader.com')}
-                      className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:text-blue-600 dark:hover:text-blue-400 transition cursor-pointer"
-                    >
-                      {copiedEmail ? <Check className="w-3.5 h-3.5 text-emerald-500" /> : <Copy className="w-3.5 h-3.5" />}
-                      <span>{copiedEmail ? 'Email Copied!' : 'Copy contact@...'}</span>
-                    </button>
                   </div>
                 </div>
               ) : (
