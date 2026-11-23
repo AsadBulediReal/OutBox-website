@@ -450,13 +450,6 @@ export const COMPARISONS = [
     rclone: false,
   },
   {
-    feature: 'Requires Hard Drive Sync Installation',
-    outbox: false,
-    dropboxWeb: false,
-    officialClient: true,
-    rclone: false,
-  },
-  {
     feature: 'Visual GUI with Search, Filter & Log',
     outbox: true,
     dropboxWeb: 'Limited web preview',
