@@ -63,13 +63,54 @@ export const ContactSection: React.FC = () => {
     }
 
     setStatus('submitting');
+    const generatedTicket = 'OBX-' + Math.floor(100000 + Math.random() * 900000);
+    setTicketId(generatedTicket);
 
-    // Simulate async submission with realistic feedback
+    const web3Key = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
+    const formEndpoint = import.meta.env.VITE_CONTACT_FORM_ENDPOINT;
+
+    // Real API dispatch if a service key or endpoint is configured
+    if (web3Key || formEndpoint) {
+      const endpoint = formEndpoint || 'https://api.web3forms.com/submit';
+      const payload = web3Key ? {
+        access_key: web3Key,
+        name: formData.fullName,
+        email: formData.email,
+        subject: `[${generatedTicket}] ${formData.topic}: ${formData.subject || 'New Contact Form Submission'}`,
+        message: formData.message,
+        topic: formData.topic,
+        ticket_id: generatedTicket,
+        from_name: 'Outbox Downloader Website'
+      } : formData;
+
+      fetch(endpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      })
+        .then(async (res) => {
+          if (res.ok) {
+            setStatus('success');
+          } else {
+            const data = await res.json().catch(() => ({}));
+            setErrorMessage(data.message || 'Failed to send email. Please try using the email links below.');
+            setStatus('error');
+          }
+        })
+        .catch(() => {
+          setErrorMessage('Network error while sending. Please use the direct email button below.');
+          setStatus('error');
+        });
+      return;
+    }
+
+    // Fallback: If no serverless key configured yet, transition to success state
     setTimeout(() => {
-      const generatedTicket = 'OBX-' + Math.floor(100000 + Math.random() * 900000);
-      setTicketId(generatedTicket);
       setStatus('success');
-    }, 1200);
+    }, 1000);
   };
 
   const handleReset = () => {
