@@ -132,7 +132,7 @@ export const LegalModal: React.FC<LegalModalProps> = ({
               <div>
                 <h4 className="font-bold text-slate-900 dark:text-white">4. Contacting Us About Privacy</h4>
                 <p className="text-xs mt-1">
-                  If you have questions or concerns about this policy, email us directly at <a href="mailto:support@outboxdownloader.com" className="text-blue-600 dark:text-blue-400 font-medium underline">support@outboxdownloader.com</a>.
+                  If you have questions or concerns about this policy, email us directly at <a href="mailto:contact@outboxdownloader.com" className="text-blue-600 dark:text-blue-400 font-medium underline">contact@outboxdownloader.com</a>.
                 </p>
               </div>
             </div>
@@ -173,7 +173,7 @@ export const LegalModal: React.FC<LegalModalProps> = ({
               <div>
                 <h4 className="font-bold text-slate-900 dark:text-white">4. Contact Information</h4>
                 <p className="text-xs mt-1">
-                  For legal inquiries or questions concerning our terms, please contact <a href="mailto:support@outboxdownloader.com" className="text-blue-600 dark:text-blue-400 font-medium underline">support@outboxdownloader.com</a>.
+                  For legal inquiries or questions concerning our terms, please contact <a href="mailto:contact@outboxdownloader.com" className="text-blue-600 dark:text-blue-400 font-medium underline">contact@outboxdownloader.com</a>.
                 </p>
               </div>
             </div>
