@@ -67,11 +67,11 @@ export const ContactSection: React.FC = () => {
     setTicketId(generatedTicket);
 
     const web3Key = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
-    const formEndpoint = import.meta.env.VITE_CONTACT_FORM_ENDPOINT;
+    const customEndpoint = import.meta.env.VITE_CONTACT_FORM_ENDPOINT;
 
-    // Real API dispatch if a service key or endpoint is configured
-    if (web3Key || formEndpoint) {
-      const endpoint = formEndpoint || 'https://api.web3forms.com/submit';
+    // 1. If Web3Forms or an external endpoint is configured
+    if (web3Key || customEndpoint) {
+      const endpoint = customEndpoint || 'https://api.web3forms.com/submit';
       const payload = web3Key ? {
         access_key: web3Key,
         name: formData.fullName,
@@ -96,21 +96,54 @@ export const ContactSection: React.FC = () => {
             setStatus('success');
           } else {
             const data = await res.json().catch(() => ({}));
-            setErrorMessage(data.message || 'Failed to send email. Please try using the email links below.');
+            setErrorMessage(data.message || 'Failed to send message. Please try using the direct email button.');
             setStatus('error');
           }
         })
         .catch(() => {
-          setErrorMessage('Network error while sending. Please use the direct email button below.');
+          setErrorMessage('Network error while sending. Please try using direct email.');
           setStatus('error');
         });
       return;
     }
 
-    // Fallback: If no serverless key configured yet, transition to success state
-    setTimeout(() => {
-      setStatus('success');
-    }, 1000);
+    // 2. Default: Dispatch directly to Hostinger native PHP mailer (/contact.php)
+    fetch('/contact.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        ...formData,
+        ticketId: generatedTicket
+      })
+    })
+      .then(async (res) => {
+        if (res.ok) {
+          setStatus('success');
+        } else {
+          // In local dev, Vite static server doesn't execute PHP files (returns 404)
+          if (import.meta.env.DEV) {
+            console.info('[Dev] /contact.php will execute automatically once uploaded to Hostinger.');
+            setStatus('success');
+            return;
+          }
+          const data = await res.json().catch(() => ({}));
+          setErrorMessage(data.message || 'Hostinger mail service returned an error. Please email us directly.');
+          setStatus('error');
+        }
+      })
+      .catch(() => {
+        // In local Vite dev environment, fallback gracefully
+        if (import.meta.env.DEV) {
+          console.info('[Dev] /contact.php will execute on Hostinger.');
+          setStatus('success');
+          return;
+        }
+        setErrorMessage('Could not connect to contact mailer. Please reach out via direct email.');
+        setStatus('error');
+      });
   };
 
   const handleReset = () => {
