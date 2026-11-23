@@ -45,6 +45,19 @@ function formatBytesToMB(bytes?: number): string {
   return `~${mb} MB`;
 }
 
+function compareVersions(v1: string, v2: string): number {
+  const parse = (v: string) =>
+    (v || '')
+      .replace(/^v/, '')
+      .split('.')
+      .map((p) => parseInt(p, 10) || 0);
+  const [maj1 = 0, min1 = 0, pat1 = 0] = parse(v1);
+  const [maj2 = 0, min2 = 0, pat2 = 0] = parse(v2);
+  if (maj1 !== maj2) return maj1 - maj2;
+  if (min1 !== min2) return min1 - min2;
+  return pat1 - pat2;
+}
+
 export const ReleaseProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [release, setRelease] = useState<ReleaseInfo>(() => {
     // Attempt instant read from cached localStorage
@@ -53,8 +66,16 @@ export const ReleaseProvider: React.FC<{ children: React.ReactNode }> = ({ child
         const cachedRaw = localStorage.getItem(CACHE_KEY);
         if (cachedRaw) {
           const cached = JSON.parse(cachedRaw);
-          if (cached && cached.data && Date.now() - cached.timestamp < CACHE_TTL_MS) {
+          if (
+            cached &&
+            cached.data &&
+            Date.now() - cached.timestamp < CACHE_TTL_MS &&
+            compareVersions(cached.data.version || '', DEFAULT_RELEASE.version) >= 0
+          ) {
             return { ...DEFAULT_RELEASE, ...cached.data, isLoading: false };
+          } else {
+            // Stale or older cached version, clear cache
+            localStorage.removeItem(CACHE_KEY);
           }
         }
       } catch {
@@ -85,6 +106,19 @@ export const ReleaseProvider: React.FC<{ children: React.ReactNode }> = ({ child
 
         const rawTag: string = data.tag_name;
         const cleanVersion = rawTag.startsWith('v') ? rawTag.substring(1) : rawTag;
+
+        // If GitHub latest release is older than our local releaseInfo, do not downgrade
+        if (compareVersions(cleanVersion, DEFAULT_RELEASE.version) < 0) {
+          if (isMounted) {
+            setRelease((prev) => ({
+              ...DEFAULT_RELEASE,
+              ...prev,
+              isLoading: false,
+            }));
+          }
+          return;
+        }
+
         const assets: any[] = Array.isArray(data.assets) ? data.assets : [];
 
         // Find Windows Setup installer asset
