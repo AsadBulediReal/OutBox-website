@@ -8,7 +8,6 @@ import {
   KeyRound,
   Apple
 } from 'lucide-react';
-import { useReleaseInfo } from '../context/ReleaseContext';
 
 interface HeroProps {
   onOpenDownload: (os?: 'win' | 'mac') => void;
@@ -16,7 +15,6 @@ interface HeroProps {
 }
 
 export const Hero: React.FC<HeroProps> = ({ onOpenDownload, onScrollToSimulator }) => {
-  const release = useReleaseInfo();
   return (
     <section className="relative overflow-hidden pt-12 pb-20 md:pt-20 md:pb-32">
       {/* Background Glow Orbs */}
@@ -25,12 +23,6 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDownload, onScrollToSimulator 
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-blue-500/10 via-sky-500/10 to-indigo-500/10 border border-blue-500/20 text-xs font-semibold text-blue-700 dark:text-blue-300 shadow-xs mb-6">
-            <Sparkles className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
-            <span>Outbox Downloader Desktop v{release.version} Now Available</span>
-          </div>
-
           {/* Main Title with Background Gradient Aura */}
           <div className="relative w-full">
             {/* Luminous Title Background Gradient */}

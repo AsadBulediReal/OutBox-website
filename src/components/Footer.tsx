@@ -1,15 +1,14 @@
 import React from 'react';
-import { ArrowUp, Monitor, Apple, Sparkles } from 'lucide-react';
+import { ArrowUp, Monitor, Apple } from 'lucide-react';
 import { useReleaseInfo } from '../context/ReleaseContext';
 
 interface FooterProps {
-  onOpenAutoAds?: () => void;
   onOpenLegal?: (tab: 'privacy' | 'terms') => void;
 }
 
 const CURRENT_YEAR = new Date().getFullYear();
 
-export const Footer: React.FC<FooterProps> = ({ onOpenAutoAds, onOpenLegal }) => {
+export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {
   const release = useReleaseInfo();
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -27,7 +26,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenAutoAds, onOpenLegal }) =>
               </div>
               <span className="text-xl font-extrabold text-slate-900 dark:text-white select-none">Outbox Downloader</span>
               <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20 select-none">
-                v{release.version} Pro
+                v{release.version}
               </span>
             </div>
             <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 max-w-sm leading-relaxed">
@@ -53,9 +52,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenAutoAds, onOpenLegal }) =>
               <li><a href="#features" className="hover:text-blue-600 dark:hover:text-blue-400 transition">Features</a></li>
               <li><a href="#how-it-works" className="hover:text-blue-600 dark:hover:text-blue-400 transition">How It Works</a></li>
               <li><a href="#comparison" className="hover:text-blue-600 dark:hover:text-blue-400 transition">Comparison Matrix</a></li>
-              <li><a href="#about" className="hover:text-blue-600 dark:hover:text-blue-400 font-medium text-slate-700 dark:text-slate-300 transition">About Us & Mission</a></li>
               <li><a href="#faq" className="hover:text-blue-600 dark:hover:text-blue-400 transition">FAQ</a></li>
-              <li><a href="#contact" className="hover:text-blue-600 dark:hover:text-blue-400 font-medium text-slate-700 dark:text-slate-300 transition">Contact & Support</a></li>
             </ul>
           </div>
 
@@ -119,20 +116,8 @@ export const Footer: React.FC<FooterProps> = ({ onOpenAutoAds, onOpenLegal }) =>
                 </button>
               </>
             )}
-            {onOpenAutoAds && (
-              <>
-                <span>•</span>
-                <button
-                  onClick={onOpenAutoAds}
-                  className="inline-flex items-center gap-1 text-[11px] font-semibold text-blue-600 dark:text-blue-400 hover:underline cursor-pointer"
-                >
-                  <Sparkles className="w-3 h-3" />
-                  <span>Auto Ads</span>
-                </button>
-              </>
-            )}
           </div>
-          
+
           <div className="text-center sm:text-right max-w-md">
             Outbox Downloader is an independent utility and is not affiliated, associated, authorized, endorsed by, or in any way officially connected with Dropbox, Inc.
           </div>

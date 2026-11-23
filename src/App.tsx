@@ -124,7 +124,6 @@ export function App() {
 
         {/* Footer */}
         <Footer 
-          onOpenAutoAds={() => setIsAutoAdsOpen(true)}
           onOpenLegal={(tab) => setLegalModalTab(tab)}
         />
 
