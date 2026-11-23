@@ -1,14 +1,10 @@
 {
-  "version": "1.0.9",
-  "tag": "v1.0.9",
-  "winFileName": "Outbox_Downloader_Windows_Setup_v1.0.9.exe",
-  "macFileName": "Outbox_Downloader_macOS_v1.0.9.dmg",
-  "winDownloadUrl": "https://github.com/AsadBulediReal/outbox-releases/releases/download/v1.0.9/Outbox_Downloader_Windows_Setup_v1.0.9.exe",
-  "macDownloadUrl": "https://github.com/AsadBulediReal/outbox-releases/releases/download/v1.0.9/Outbox_Downloader_macOS_v1.0.9.dmg",
-  "winGithubUrl": "https://github.com/AsadBulediReal/outbox-releases/releases/download/v1.0.9/Outbox_Downloader_Windows_Setup_v1.0.9.exe",
-  "macGithubUrl": "https://github.com/AsadBulediReal/outbox-releases/releases/download/v1.0.9/Outbox_Downloader_macOS_v1.0.9.dmg",
-  "winCloudinaryUrl": "",
-  "macCloudinaryUrl": "",
+  "version": "1.1.0",
+  "tag": "v1.1.0",
+  "winFileName": "Outbox_Downloader_Windows_Setup_v1.1.0.exe",
+  "macFileName": "Outbox_Downloader_macOS_v1.1.0.dmg",
+  "winDownloadUrl": "https://outboxdownloader.com/downloads/Outbox_Downloader_Windows_Setup_v1.1.0.exe",
+  "macDownloadUrl": "https://outboxdownloader.com/downloads/Outbox_Downloader_macOS_v1.1.0.dmg",
   "publishedAt": "2026-11-23",
   "releaseDate": "2026-11-23"
 }
