@@ -19,13 +19,36 @@ import { AutoAdsManager } from './components/ads/AutoAdsManager';
 import { ReleaseProvider } from './context/ReleaseContext';
 import { registerOutboxWebMcpTools } from './utils/webmcp';
 
+const THEME_STORAGE_KEY = 'outbox_theme';
+
 export function App() {
-  // Light mode is default as requested
-  const [darkMode, setDarkMode] = useState<boolean>(false);
+  // Follow system theme by default, or use saved user preference
+  const [darkMode, setDarkMode] = useState<boolean>(() => {
+    try {
+      const saved = localStorage.getItem(THEME_STORAGE_KEY);
+      if (saved === 'dark') return true;
+      if (saved === 'light') return false;
+    } catch {
+      // Ignore localStorage read errors
+    }
+    return (
+      typeof window !== 'undefined' &&
+      window.matchMedia?.('(prefers-color-scheme: dark)').matches
+    );
+  });
   const [isDownloadOpen, setIsDownloadOpen] = useState<boolean>(false);
   const [downloadOs, setDownloadOs] = useState<'win' | 'mac' | undefined>(undefined);
   const [isAutoAdsOpen, setIsAutoAdsOpen] = useState<boolean>(false);
   const [legalModalTab, setLegalModalTab] = useState<'privacy' | 'terms' | null>(null);
+
+  const handleSetDarkMode = (nextDark: boolean) => {
+    setDarkMode(nextDark);
+    try {
+      localStorage.setItem(THEME_STORAGE_KEY, nextDark ? 'dark' : 'light');
+    } catch {
+      // Ignore localStorage write errors
+    }
+  };
 
   const handleOpenDownload = (os?: 'win' | 'mac') => {
     setDownloadOs(os);
@@ -41,6 +64,24 @@ export function App() {
       document.documentElement.style.colorScheme = 'light';
     }
   }, [darkMode]);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia?.('(prefers-color-scheme: dark)');
+    if (!mediaQuery) return;
+
+    const handleSystemThemeChange = (e: MediaQueryListEvent) => {
+      try {
+        const saved = localStorage.getItem(THEME_STORAGE_KEY);
+        if (saved === 'dark' || saved === 'light') return;
+      } catch {
+        // Ignore localStorage read errors
+      }
+      setDarkMode(e.matches);
+    };
+
+    mediaQuery.addEventListener('change', handleSystemThemeChange);
+    return () => mediaQuery.removeEventListener('change', handleSystemThemeChange);
+  }, []);
 
   useEffect(() => {
     return registerOutboxWebMcpTools(() => handleOpenDownload());
@@ -59,7 +100,7 @@ export function App() {
         {/* Top Sticky Navbar */}
         <Navbar
           darkMode={darkMode}
-          setDarkMode={setDarkMode}
+          setDarkMode={handleSetDarkMode}
           onOpenDownload={() => handleOpenDownload()}
           onScrollToSimulator={handleScrollToSimulator}
         />
