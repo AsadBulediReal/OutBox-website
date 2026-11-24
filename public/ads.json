@@ -1,0 +1,18 @@
+{
+  "ads": [
+    {
+      "badge": "Special Deal",
+      "title": "pCloud Lifetime Storage \u2014 Up to 10TB",
+      "description": "One-time payment, lifetime access. Plans from $219. No subscriptions ever.",
+      "cta": "Get Lifetime Deal \u2192",
+      "url": "https://partner.pcloud.com/r/159285"
+    },
+    {
+      "badge": "Partner",
+      "title": "NordVPN Threat Protection Pro",
+      "description": "Fast, encrypted transfers with zero ISP throttling on any network.",
+      "cta": "Get Deal \u2192",
+      "url": "https://nordvpn.com/"
+    }
+  ]
+}

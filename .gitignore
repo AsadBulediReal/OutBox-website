@@ -29,6 +29,6 @@ dist-ssr
 *.sw?
 
 # Release installers and remote ad configuration
-downloads/
-ads.json
+# downloads/  # un-ignored for public distribution
+# ads.json  # un-ignored for public distribution
 
