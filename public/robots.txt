@@ -2,6 +2,7 @@
 User-agent: *
 Allow: /
 Disallow: /contact.php
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
 
 # Sitemap pointer
 Sitemap: https://outboxdownloader.com/sitemap.xml
