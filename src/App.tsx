@@ -17,6 +17,7 @@ import { LeaderboardAd } from './components/ads/LeaderboardAd';
 import { FloatingBottomAd } from './components/ads/FloatingBottomAd';
 import { AutoAdsManager } from './components/ads/AutoAdsManager';
 import { ReleaseProvider } from './context/ReleaseContext';
+import { registerOutboxWebMcpTools } from './utils/webmcp';
 
 export function App() {
   // Light mode is default as requested
@@ -40,6 +41,10 @@ export function App() {
       document.documentElement.style.colorScheme = 'light';
     }
   }, [darkMode]);
+
+  useEffect(() => {
+    return registerOutboxWebMcpTools(() => handleOpenDownload());
+  }, []);
 
   const handleScrollToSimulator = () => {
     const el = document.getElementById('simulator');

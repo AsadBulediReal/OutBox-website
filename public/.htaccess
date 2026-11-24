@@ -1,0 +1,28 @@
+# MIME types for agent-native resources
+<IfModule mod_mime.c>
+  AddType text/markdown .md
+  AddType application/json .json
+</IfModule>
+
+# Content negotiation: serve Markdown when an agent requests Accept: text/markdown
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTP_ACCEPT} text/markdown [NC]
+  RewriteCond %{REQUEST_URI} ^/(index\.html)?$
+  RewriteRule ^(index\.html)?$ /index.md [L]
+</IfModule>
+
+# Advertise agent resources via RFC 8288 Link headers and enable CORS for agent discovery files
+<IfModule mod_headers.c>
+  <FilesMatch "^(index\.html)?$">
+    Header append Vary Accept
+    Header add Link "</llms.txt>; rel=\"llms-txt\"; type=\"text/markdown\""
+    Header add Link "</index.md>; rel=\"alternate\"; type=\"text/markdown\""
+    Header add Link "</.well-known/mcp/server-card.json>; rel=\"mcp-server-card\"; type=\"application/json\""
+    Header add Link "</sitemap.xml>; rel=\"sitemap\"; type=\"application/xml\""
+  </FilesMatch>
+
+  <FilesMatch "\.(md|txt|json)$">
+    Header set Access-Control-Allow-Origin "*"
+  </FilesMatch>
+</IfModule>
