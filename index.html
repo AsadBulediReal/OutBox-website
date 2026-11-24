@@ -129,6 +129,7 @@
   <meta name='impact-site-verification' value='b4e2ab93-7a61-42f0-b13c-c5e1ee7de98f'>
   <!-- Apply saved or system theme before first paint to prevent flash of wrong theme -->
   <script>
+    document.documentElement.classList.add('js');
     (function () {
       try {
         var saved = localStorage.getItem('outbox_theme');
@@ -143,6 +144,11 @@
       } catch (e) {}
     })();
   </script>
+  <!-- Hide static SEO fallback when JS is enabled to prevent FOUC before React mounts -->
+  <style>
+    html.js #static-fallback { display: none; }
+    html.dark body { background-color: #060913; }
+  </style>
   <!-- Google Auto Ads Preloader (Activates if publisher ID is saved in localStorage and script is not already injected) -->
   <script>
     (function () {
@@ -162,7 +168,7 @@
 <body
   class="bg-slate-50 dark:bg-[#060913] text-slate-900 dark:text-slate-100 antialiased font-sans selection:bg-blue-600 selection:text-white">
   <div id="root">
-    <main>
+    <main id="static-fallback">
       <h1>Outbox Downloader — Selective Dropbox Downloader &amp; Folder Extractor</h1>
       <p>Free ($0 USD) desktop utility for Windows 10/11 and macOS 11+ engineered for selective, resumable, and cryptographically verified downloads from Dropbox shared links.</p>
       <nav aria-label="Site links">
