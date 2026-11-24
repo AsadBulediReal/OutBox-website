@@ -96,9 +96,9 @@ const SkyscraperCard: React.FC<SkyscraperCardProps> = ({ side, defaultIndex, onO
             <div className="w-12 h-12 mx-auto mb-3 rounded-2xl bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center text-white shadow-md shadow-blue-500/20">
               <AdIcon name={SPONSOR_ADS_POOL[adIndex].iconName} className="w-6 h-6" />
             </div>
-            <h4 className="text-xs font-extrabold text-slate-900 dark:text-white leading-snug">
+            <p className="text-xs font-extrabold text-slate-900 dark:text-white leading-snug">
               {SPONSOR_ADS_POOL[adIndex].brand}
-            </h4>
+            </p>
             <p className="mt-1 text-[11px] font-semibold text-blue-600 dark:text-blue-400 leading-tight">
               {SPONSOR_ADS_POOL[adIndex].tagline}
             </p>
@@ -126,9 +126,9 @@ const SkyscraperCard: React.FC<SkyscraperCardProps> = ({ side, defaultIndex, onO
             No Active Ads
           </span>
 
-          <h4 className="text-xs font-extrabold text-slate-700 dark:text-slate-300">
+          <p className="text-xs font-extrabold text-slate-700 dark:text-slate-300">
             No Ads Available
-          </h4>
+          </p>
 
           <p className="mt-2 text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed">
             There are currently no advertisements to display in this slot.

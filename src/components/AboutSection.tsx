@@ -97,9 +97,9 @@ export const AboutSection: React.FC = () => {
             <div className="w-12 h-12 rounded-xl bg-blue-500/10 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400 flex items-center justify-center mb-5 group-hover:scale-105 transition">
               <Lock className="w-6 h-6" />
             </div>
-            <h4 className="text-xl font-bold text-slate-900 dark:text-white mb-2">
+            <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">
               Zero Intermediary Servers
-            </h4>
+            </h3>
             <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
               We do not route your file streams through proxy servers, cloud relays, or caching layers. All network connections are established directly between your desktop client and Dropbox&rsquo;s official edge CDN over TLS 1.3 encryption. Your data stays strictly yours.
             </p>
@@ -110,9 +110,9 @@ export const AboutSection: React.FC = () => {
             <div className="w-12 h-12 rounded-xl bg-emerald-500/10 dark:bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-5 group-hover:scale-105 transition">
               <Cpu className="w-6 h-6" />
             </div>
-            <h4 className="text-xl font-bold text-slate-900 dark:text-white mb-2">
+            <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">
               High-Throughput Native Engine
-            </h4>
+            </h3>
             <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
               Built on PySide6 and modern concurrency frameworks, Outbox Downloader utilizes segmented HTTP chunking, dynamic multi-threading, and persistent socket reuse to maximize your local bandwidth while keeping system resource utilization lean.
             </p>
@@ -123,9 +123,9 @@ export const AboutSection: React.FC = () => {
             <div className="w-12 h-12 rounded-xl bg-amber-500/10 dark:bg-amber-500/20 text-amber-600 dark:text-amber-400 flex items-center justify-center mb-5 group-hover:scale-105 transition">
               <Globe2 className="w-6 h-6" />
             </div>
-            <h4 className="text-xl font-bold text-slate-900 dark:text-white mb-2">
-              Ethical & Transparent Funding
-            </h4>
+            <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">
+              Ethical &amp; Transparent Funding
+            </h3>
             <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
               Our official website <span className="font-semibold text-blue-600 dark:text-blue-400">outboxdownloader.com</span> is supported by non-intrusive Google AdSense advertising. This transparent model funds ongoing development, fast CDN hosting, and prompt security updates while keeping the software free to download.
             </p>
@@ -136,9 +136,9 @@ export const AboutSection: React.FC = () => {
             <div className="w-12 h-12 rounded-xl bg-purple-500/10 dark:bg-purple-500/20 text-purple-600 dark:text-purple-400 flex items-center justify-center mb-5 group-hover:scale-105 transition">
               <ShieldCheck className="w-6 h-6" />
             </div>
-            <h4 className="text-xl font-bold text-slate-900 dark:text-white mb-2">
+            <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">
               Clear Independent Disclosure
-            </h4>
+            </h3>
             <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
               Outbox Downloader is an independently engineered utility created to improve cloud file accessibility. We are not affiliated, associated, authorized, endorsed by, or in any way officially connected with Dropbox, Inc. Dropbox and the Dropbox logo are registered trademarks of Dropbox, Inc.
             </p>

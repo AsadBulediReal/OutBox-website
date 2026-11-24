@@ -84,9 +84,9 @@ export const LeaderboardAd: React.FC<LeaderboardAdProps> = ({
                 <AdIcon name={SPONSOR_ADS_POOL[adIndex].iconName} className="w-6 h-6" />
               </div>
               <div>
-                <h4 className="text-sm sm:text-base font-bold text-slate-900 dark:text-white">
+                <p className="text-sm sm:text-base font-bold text-slate-900 dark:text-white">
                   {SPONSOR_ADS_POOL[adIndex].brand}
-                </h4>
+                </p>
                 <p className="mt-1 text-xs text-slate-600 dark:text-slate-300 max-w-2xl">
                   {SPONSOR_ADS_POOL[adIndex].description}
                 </p>
@@ -107,9 +107,9 @@ export const LeaderboardAd: React.FC<LeaderboardAdProps> = ({
                 <MegaphoneOff className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="text-sm font-bold text-slate-700 dark:text-slate-300">
+                <p className="text-sm font-bold text-slate-700 dark:text-slate-300">
                   No Ads Available
-                </h4>
+                </p>
                 <p className="text-xs text-slate-500 dark:text-slate-400">
                   There are currently no active advertisements to display in this slot.
                 </p>

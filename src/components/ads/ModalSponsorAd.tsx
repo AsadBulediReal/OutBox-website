@@ -52,9 +52,9 @@ export const ModalSponsorAd: React.FC = () => {
               <AdIcon name={adData.iconName} className="w-4 h-4" />
             </div>
             <div>
-              <h5 className="text-xs font-bold text-slate-900 dark:text-white">
+              <p className="text-xs font-bold text-slate-900 dark:text-white">
                 {adData.brand}
-              </h5>
+              </p>
               <p className="text-[11px] text-slate-500 dark:text-slate-400 line-clamp-1">
                 {adData.tagline}
               </p>

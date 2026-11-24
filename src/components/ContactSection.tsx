@@ -210,9 +210,14 @@ export const ContactSection: React.FC = () => {
                   <div className="text-[11px] font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
                     General & Technical Inquiries
                   </div>
-                  <div className="text-sm font-bold text-slate-900 dark:text-white font-mono truncate">
-                    contact@outboxdownloader.com
-                  </div>
+                  <address className="not-italic text-sm font-bold text-slate-900 dark:text-white font-mono truncate">
+                    <a
+                      href="mailto:contact@outboxdownloader.com"
+                      className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                    >
+                      contact@outboxdownloader.com
+                    </a>
+                  </address>
                 </div>
                 <button
                   onClick={() => handleCopyEmail('contact@outboxdownloader.com')}

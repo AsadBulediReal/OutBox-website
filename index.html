@@ -14,6 +14,110 @@
   <meta property="og:description"
     content="Selective, resumable, and cryptographically verified downloads from Dropbox shared links." />
   <meta property="og:url" content="https://outboxdownloader.com/" />
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://outboxdownloader.com/#organization",
+          "name": "Outbox Downloader",
+          "legalName": "Outbox Downloader",
+          "url": "https://outboxdownloader.com",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://outboxdownloader.com/outbox_icon.svg"
+          },
+          "description": "Independent desktop utility engineered for selective, resumable, and cryptographically verified downloads from Dropbox shared links.",
+          "email": "contact@outboxdownloader.com",
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "customer support",
+            "email": "contact@outboxdownloader.com",
+            "url": "https://outboxdownloader.com/contact.html",
+            "availableLanguage": ["English"]
+          },
+          "sameAs": [
+            "https://github.com/AsadBulediReal/OutBox-website"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://outboxdownloader.com/#website",
+          "url": "https://outboxdownloader.com/",
+          "name": "Outbox Downloader",
+          "description": "Selective, resumable, and cryptographically verified downloads from Dropbox shared links.",
+          "publisher": {
+            "@id": "https://outboxdownloader.com/#organization"
+          }
+        },
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://outboxdownloader.com/#software",
+          "name": "Outbox Downloader",
+          "operatingSystem": "Windows 10, Windows 11, macOS 11+",
+          "applicationCategory": "UtilitiesApplication",
+          "softwareVersion": "1.1.3",
+          "url": "https://outboxdownloader.com/",
+          "downloadUrl": "https://outboxdownloader.com/downloads/Outbox_Downloader_Windows_Setup_v1.1.3.exe",
+          "publisher": {
+            "@id": "https://outboxdownloader.com/#organization"
+          },
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://outboxdownloader.com/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Do I need a paid Dropbox subscription or cloud storage quota?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No. Outbox works with any Dropbox account (including free Basic) and requires zero storage quota in your own Dropbox account. Files stream directly from the shared link to your local drive without taking up space in your personal cloud."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How does the automatic pause and resume mechanism work?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "When downloading, Outbox writes incoming data to temporary files while tracking exact byte offsets. If your network blips, your computer sleeps, or you pause the transfer, Outbox sends standard HTTP Range requests from the last verified byte, avoiding wasted bandwidth."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How does cryptographic verification guarantee intact downloads?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Outbox computes SHA-256 hashes on 4MB data blocks in real time and validates them against Dropbox's content_hash specification. If any block fails or is truncated, Outbox re-downloads only that block. You can also run Verify Files anytime to audit existing files on your drive."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Are my files, tokens, or links sent through any third-party servers?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No. Outbox connects directly from your local machine to Dropbox's official APIs over encrypted HTTPS. There are zero proxy servers, intermediate databases, or telemetry trackers. Your credentials and files never leave your computer."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Which platforms and link formats are supported?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Outbox is available as a standalone executable for Windows 10/11, a native app for macOS, and can be run from source on Linux. It supports standard shared links (/scl/fo/..., /sh/...), team folders, and password-protected folders."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link

@@ -46,7 +46,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {
 
           {/* Quick Links */}
           <div className="space-y-3">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-slate-200">Product</h4>
+            <p className="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-slate-200">Product</p>
             <ul className="space-y-2 text-xs">
               <li><a href="#simulator" className="hover:text-blue-600 dark:hover:text-blue-400 transition">Interactive Simulator</a></li>
               <li><a href="#features" className="hover:text-blue-600 dark:hover:text-blue-400 transition">Features</a></li>
@@ -58,36 +58,44 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {
 
           {/* Legal & Policy */}
           <div className="space-y-3">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-slate-200">Legal & Transparency</h4>
+            <p className="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-slate-200">Legal &amp; Transparency</p>
             <ul className="space-y-2 text-xs">
-              {onOpenLegal && (
-                <>
-                  <li>
-                    <button
-                      onClick={() => onOpenLegal('privacy')}
-                      className="hover:text-blue-600 dark:hover:text-blue-400 transition text-left cursor-pointer"
-                    >
-                      Privacy Policy
-                    </button>
-                  </li>
-                  <li>
-                    <button
-                      onClick={() => onOpenLegal('terms')}
-                      className="hover:text-blue-600 dark:hover:text-blue-400 transition text-left cursor-pointer"
-                    >
-                      Terms of Service
-                    </button>
-                  </li>
-                </>
-              )}
               <li>
-                <a href="#about" className="hover:text-blue-600 dark:hover:text-blue-400 transition">
-                  About Our Project
+                <a
+                  href="/privacy.html"
+                  onClick={(e) => {
+                    if (onOpenLegal) {
+                      e.preventDefault();
+                      onOpenLegal('privacy');
+                    }
+                  }}
+                  className="hover:text-blue-600 dark:hover:text-blue-400 transition"
+                >
+                  Privacy Policy
                 </a>
               </li>
               <li>
-                <a href="#contact" className="hover:text-blue-600 dark:hover:text-blue-400 transition">
-                  Contact & Support
+                <a
+                  href="/terms.html"
+                  onClick={(e) => {
+                    if (onOpenLegal) {
+                      e.preventDefault();
+                      onOpenLegal('terms');
+                    }
+                  }}
+                  className="hover:text-blue-600 dark:hover:text-blue-400 transition"
+                >
+                  Terms of Service
+                </a>
+              </li>
+              <li>
+                <a href="/about.html" className="hover:text-blue-600 dark:hover:text-blue-400 transition">
+                  About Us
+                </a>
+              </li>
+              <li>
+                <a href="/contact.html" className="hover:text-blue-600 dark:hover:text-blue-400 transition">
+                  Contact Us
                 </a>
               </li>
             </ul>
@@ -98,24 +106,36 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {
         <div className="pt-8 border-t border-slate-200 dark:border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
           <div className="flex flex-wrap items-center gap-3">
             <span>© {CURRENT_YEAR} Outbox Downloader (outboxdownloader.com). All rights reserved.</span>
-            {onOpenLegal && (
-              <>
-                <span>•</span>
-                <button
-                  onClick={() => onOpenLegal('privacy')}
-                  className="hover:text-blue-600 dark:hover:text-blue-400 underline cursor-pointer"
-                >
-                  Privacy
-                </button>
-                <span>•</span>
-                <button
-                  onClick={() => onOpenLegal('terms')}
-                  className="hover:text-blue-600 dark:hover:text-blue-400 underline cursor-pointer"
-                >
-                  Terms
-                </button>
-              </>
-            )}
+            <span>•</span>
+            <a
+              href="/privacy.html"
+              onClick={(e) => {
+                if (onOpenLegal) {
+                  e.preventDefault();
+                  onOpenLegal('privacy');
+                }
+              }}
+              className="hover:text-blue-600 dark:hover:text-blue-400 underline"
+            >
+              Privacy
+            </a>
+            <span>•</span>
+            <a
+              href="/terms.html"
+              onClick={(e) => {
+                if (onOpenLegal) {
+                  e.preventDefault();
+                  onOpenLegal('terms');
+                }
+              }}
+              className="hover:text-blue-600 dark:hover:text-blue-400 underline"
+            >
+              Terms
+            </a>
+            <span>•</span>
+            <a href="mailto:contact@outboxdownloader.com" className="hover:text-blue-600 dark:hover:text-blue-400 underline">
+              contact@outboxdownloader.com
+            </a>
           </div>
 
           <div className="text-center sm:text-right max-w-md">
