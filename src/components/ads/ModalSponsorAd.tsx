@@ -2,41 +2,53 @@ import React, { useState, useEffect } from 'react';
 import {
   AD_SETTINGS,
   SPONSOR_ADS_POOL,
-  getStoredAdSenseId,
+  getEffectiveAdSenseId,
   getShowMockAdsSetting,
 } from '../../data/adConfig';
 import { AdIcon } from './AdIcon';
+import { GoogleAdUnit, useGoogleAdStatus } from './GoogleAdUnit';
 
 export const ModalSponsorAd: React.FC = () => {
-  const [activeGooglePubId, setActiveGooglePubId] = useState<string>(() => getStoredAdSenseId());
+  const [activeGooglePubId, setActiveGooglePubId] = useState<string>(() => getEffectiveAdSenseId());
   const [showMockAds, setShowMockAds] = useState<boolean>(() => getShowMockAdsSetting());
 
   useEffect(() => {
     const handleStorageChange = () => {
-      setActiveGooglePubId(getStoredAdSenseId());
+      setActiveGooglePubId(getEffectiveAdSenseId());
       setShowMockAds(getShowMockAdsSetting());
     };
     window.addEventListener('storage', handleStorageChange);
     return () => window.removeEventListener('storage', handleStorageChange);
   }, []);
 
+  const hasRealAds = !!activeGooglePubId;
+  const hasMockAds = showMockAds && SPONSOR_ADS_POOL.length > 0;
+  const { insRef, status: adStatus } = useGoogleAdStatus(hasRealAds ? activeGooglePubId : '');
+
   if (!AD_SETTINGS.enableModalSponsor) {
     return null;
   }
 
-  const hasRealAds = !!activeGooglePubId;
-  const hasMockAds = showMockAds && SPONSOR_ADS_POOL.length > 0;
-
   if (hasRealAds) {
+    if (adStatus === 'unfilled') {
+      return null;
+    }
+
+    const isVisible = adStatus === 'filled';
+
     return (
-      <div className="p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/60 text-center">
-        <ins
-          className="adsbygoogle"
-          style={{ display: 'block' }}
-          data-ad-client={activeGooglePubId}
-          data-ad-slot="auto"
-          data-ad-format="auto"
-          data-full-width-responsive="true"
+      <div
+        aria-hidden={!isVisible}
+        className={
+          isVisible
+            ? 'p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/60 text-center'
+            : 'w-full h-0 overflow-hidden opacity-0 pointer-events-none m-0 p-0 border-0'
+        }
+      >
+        <GoogleAdUnit
+          clientId={activeGooglePubId}
+          insRef={insRef}
+          style={{ display: 'block', width: '100%' }}
         />
       </div>
     );
@@ -71,6 +83,5 @@ export const ModalSponsorAd: React.FC = () => {
     );
   }
 
-  // NO ADS STATE - Hide completely so modal stays clean & professional
   return null;
 };

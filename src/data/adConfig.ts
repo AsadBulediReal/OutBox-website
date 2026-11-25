@@ -42,6 +42,12 @@ export function getStoredAdSenseId(): string {
   return import.meta.env.VITE_ADSENSE_CLIENT_ID || '';
 }
 
+export function getEffectiveAdSenseId(): string {
+  const stored = getStoredAdSenseId();
+  if (stored) return stored;
+  return AD_SETTINGS.useGoogleAutoAds ? AD_SETTINGS.googleAdSenseClientId : '';
+}
+
 export function saveStoredAdSenseId(pubId: string): void {
   if (typeof window !== 'undefined') {
     if (pubId.trim()) {
