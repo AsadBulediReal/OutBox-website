@@ -32,6 +32,11 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {
             <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 max-w-sm leading-relaxed">
               The fast, reliable selective downloader for massive Dropbox shared links. Official website: <a href="https://outboxdownloader.com" className="text-blue-600 dark:text-blue-400 hover:underline">outboxdownloader.com</a>.
             </p>
+            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400">
+              <a href="mailto:contact@outboxdownloader.com" className="text-blue-600 dark:text-blue-400 hover:underline">
+                contact@outboxdownloader.com
+              </a>
+            </p>
             <div className="flex items-center gap-3 pt-2 text-xs text-slate-500 dark:text-slate-400">
               <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
                 <Monitor className="w-3.5 h-3.5 text-blue-500" />
@@ -131,10 +136,6 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {
               className="hover:text-blue-600 dark:hover:text-blue-400 underline"
             >
               Terms
-            </a>
-            <span>•</span>
-            <a href="mailto:contact@outboxdownloader.com" className="hover:text-blue-600 dark:hover:text-blue-400 underline">
-              contact@outboxdownloader.com
             </a>
           </div>
 
