@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { 
-  Download, 
+import {
+  Download,
   Sparkles,
   Sun,
   Moon,
@@ -52,10 +52,10 @@ export const Navbar: React.FC<NavbarProps> = ({
           <div className="relative select-none pointer-events-none">
             <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl blur-sm opacity-60 group-hover:opacity-100 transition duration-300"></div>
             <div className="relative w-10 h-10 rounded-xl overflow-hidden shadow-lg bg-blue-600 flex items-center justify-center p-1.5 border border-white/20 select-none">
-              <img 
-                src="/outbox_icon.svg" 
-                alt="Outbox Icon" 
-                className="w-full h-full object-contain filter drop-shadow select-none pointer-events-none" 
+              <img
+                src="/outbox_icon.svg"
+                alt="Outbox Icon"
+                className="w-full h-full object-contain filter drop-shadow select-none pointer-events-none"
                 draggable={false}
               />
             </div>
@@ -72,7 +72,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
         {/* Desktop Navigation Links (Ordered to match page flow) */}
         <nav className="hidden lg:flex items-center gap-3.5 xl:gap-5 2xl:gap-6 text-xs xl:text-sm font-medium text-slate-600 dark:text-slate-300">
-          <button 
+          <button
             onClick={onScrollToSimulator}
             className="flex items-center gap-1.5 text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-semibold transition-colors cursor-pointer whitespace-nowrap"
           >
@@ -82,11 +82,11 @@ export const Navbar: React.FC<NavbarProps> = ({
           <a href="#features" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors whitespace-nowrap">Features</a>
           <a href="#how-it-works" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors whitespace-nowrap">How It Works</a>
           <a href="#comparison" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors whitespace-nowrap">Comparison</a>
-          <a href="#about" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors whitespace-nowrap">About Us</a>
           <a href="#quickstart" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors whitespace-nowrap">Setup</a>
+          <a href="#about" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors whitespace-nowrap">About Us</a>
           <a href="#faq" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors whitespace-nowrap">FAQ</a>
-          <a 
-            href="#contact" 
+          <a
+            href="#contact"
             className="flex items-center gap-1.5 text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-semibold transition-colors whitespace-nowrap px-2.5 py-1 rounded-lg bg-blue-50/80 dark:bg-blue-950/40 hover:bg-blue-100/80 dark:hover:bg-blue-900/50 border border-blue-500/20"
           >
             <Mail className="w-3.5 h-3.5 text-blue-500" />
@@ -148,11 +148,10 @@ export const Navbar: React.FC<NavbarProps> = ({
                 key={idx}
                 href={item.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className={`flex items-center gap-2 px-3 py-2.5 rounded-lg text-sm font-medium transition ${
-                  item.href === '#contact'
-                    ? 'bg-blue-50 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 font-semibold border border-blue-500/20'
-                    : 'text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800/60 hover:text-blue-600 dark:hover:text-blue-400'
-                }`}
+                className={`flex items-center gap-2 px-3 py-2.5 rounded-lg text-sm font-medium transition ${item.href === '#contact'
+                  ? 'bg-blue-50 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 font-semibold border border-blue-500/20'
+                  : 'text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800/60 hover:text-blue-600 dark:hover:text-blue-400'
+                  }`}
               >
                 {item.href === '#contact' && <Mail className="w-4 h-4 text-blue-500" />}
                 {item.label}
