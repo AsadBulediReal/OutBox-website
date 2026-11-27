@@ -1,12 +1,14 @@
 {
-  "version": "1.2.6",
-  "tag": "v1.2.6",
-  "winFileName": "Outbox_Downloader_Windows_Setup_v1.2.6.exe",
-  "macFileName": "Outbox_Downloader_macOS_v1.2.6.dmg",
-  "winDownloadUrl": "https://outboxdownloader.com/downloads/Outbox_Downloader_Windows_Setup_v1.2.6.exe",
-  "macDownloadUrl": "https://outboxdownloader.com/downloads/Outbox_Downloader_macOS_v1.2.6.dmg",
+  "version": "1.2.7",
+  "tag": "v1.2.7",
+  "winFileName": "Outbox_Downloader_Windows_Setup_v1.2.7.exe",
+  "macFileName": "Outbox_Downloader_macOS_v1.2.7.dmg",
+  "winDownloadUrl": "https://outboxdownloader.com/downloads/Outbox_Downloader_Windows_Setup_v1.2.7.exe",
+  "macDownloadUrl": "https://outboxdownloader.com/downloads/Outbox_Downloader_macOS_v1.2.7.dmg",
+  "winSha256": "e78a58739f638836891008aa793b913a1891b580cd7f9108bb6b2d8fa75f7062",
+  "macSha256": "52ca147805013a3eac4c60f2cfc844c7536618a9d649e9719ed5eaa1ab5ea391",
   "winSizeFormatted": "~37 MB",
   "macSizeFormatted": "~40 MB",
-  "publishedAt": "2026-11-26",
-  "releaseDate": "2026-11-26"
+  "publishedAt": "2026-11-27",
+  "releaseDate": "2026-11-27"
 }
